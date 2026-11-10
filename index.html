@@ -6,35 +6,20 @@
   <meta name="theme-color" content="#64130f">
   <meta name="description" content="Aditya & Vaishnavi — Wedding Invitation">
   <title>Aditya & Vaishnavi — Wedding Invitation</title>
+  <link rel="preload" as="image" href="images/names-background.jpg">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <main class="invitation">
 
   <!-- =========================================================
-       STEP 1 — THEATRE CURTAIN
+       STEP 1 — NAMES
        ========================================================= -->
-  <section class="curtain-screen" id="curtainScreen" aria-label="Wedding invitation opening">
-    <div class="curtain curtain-left" aria-hidden="true"></div>
-    <div class="curtain curtain-right" aria-hidden="true"></div>
-
-    <button class="monogram-button" id="openInvitation" type="button"
-            aria-label="Open Aditya and Vaishnavi wedding invitation">
-      <span class="monogram"><b>A</b><i>&amp;</i><b>V</b></span>
-    </button>
-  </section>
-
-  <!-- =========================================================
-       STEP 2 — NAMES
-       ========================================================= -->
-  <section class="page page-names" id="pageNames" aria-hidden="true">
+  <section class="page page-names" id="pageNames" aria-hidden="false">
     <div class="language-switch">
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
-
-    <div class="side-curtain side-left" aria-hidden="true"></div>
-    <div class="side-curtain side-right" aria-hidden="true"></div>
 
     <div class="names-content">
       <div class="floral-line" aria-hidden="true">
@@ -47,9 +32,9 @@
       </p>
 
       <h1 class="couple-names">
-        <span>Aditya</span>
+        <span data-i18n="groomName">Aditya</span>
         <small>&amp;</small>
-        <span>Vaishnavi</span>
+        <span data-i18n="brideName">Vaishnavi</span>
       </h1>
 
       <p class="wedding-date" data-i18n="date">28 DECEMBER 2026</p>
@@ -81,17 +66,19 @@
     </div>
 
     <div class="welcome-inner">
+      <p class="welcome-kicker" data-i18n="welcomeKicker">A CELEBRATION OF LOVE</p>
       <p class="welcome-title" data-i18n="welcomeTitle">
-        We are so happy to celebrate this day with you.
+        A day of joy.<br>Forever begins.
       </p>
 
       <p class="welcome-copy" data-i18n="welcomeCopy">
-        Having you with us means the world. We can't wait to welcome you.
+        Join us for a day filled with joy, family, and the beginning of our forever.
       </p>
 
       <figure class="couple-art-frame">
-        <img src="images/step-3-couple.png"
-             alt="Illustration of a bride and groom"
+        <img src="images/couple-portrait.jpg"
+             alt="Aditya and Vaishnavi seated together during a wedding ceremony"
+             width="430" height="491"
              class="couple-art-image">
       </figure>
     </div>
@@ -117,8 +104,9 @@
       <h2 class="section-title" data-i18n="locationTitle">Wedding Location</h2>
 
       <figure class="location-photo">
-        <img src="images/location-couple-sunset.png"
-             alt="Couple under a floral wedding canopy at sunset">
+        <img src="images/location-couple-sunset.jpg"
+             alt="Couple under a floral wedding canopy at sunset"
+             width="920" height="832">
       </figure>
 
       <div class="location-card">
@@ -126,12 +114,94 @@
         <h3 data-i18n="locationName">Shivtirth Mangal Karyalaya Va Lawns Tirthpuri</h3>
         <p data-i18n="locationCity">Tirthpuri, Maharashtra</p>
         <button class="map-button" type="button" data-i18n="directions" id="directionsBtn">GET DIRECTIONS</button>
+        <button class="transport-button" type="button" data-i18n="transportButton" id="transportButton">NEARBY TRANSPORT</button>
+      </div>
+    </div>
+
+    <dialog class="transport-dialog" id="transportDialog" aria-labelledby="transportDialogTitle">
+      <div class="transport-dialog-header">
+        <div>
+          <p class="transport-kicker" data-i18n="transportKicker">PLAN YOUR JOURNEY</p>
+          <h2 id="transportDialogTitle" data-i18n="transportTitle">Nearby Transport</h2>
+        </div>
+        <button class="transport-close" id="transportClose" type="button"
+                aria-label="Close transport details" data-i18n-aria="transportClose">×</button>
+      </div>
+      <p class="transport-note" data-i18n="transportNote">
+        Approximate road distances from Tirthpuri; routes and journey times may vary. Please confirm current bus schedules locally.
+      </p>
+      <div class="transport-group">
+        <h3><span class="transport-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 16V6.8A2.8 2.8 0 0 1 7.8 4h8.4A2.8 2.8 0 0 1 19 6.8V16M5 11h14M5 16h14M7 16v2m10-2v2M8 20h.01M16 20h.01M5 18h14a1 1 0 0 0 1-1v-1H4v1a1 1 0 0 0 1 1Z"/></svg></span><span data-i18n="transportBus">Bus</span></h3>
+        <ul>
+          <li><strong data-i18n="transportLocalBus">Tirthpuri Local Bus Stop</strong><span data-i18n="transportLocalBusInfo">Local MSRTC buses serve Tirthpuri; confirm current timings.</span></li>
+          <li><strong data-i18n="transportAmbadBus">Ambad Bus Stand</strong><span data-i18n="transportAmbadBusInfo">About 30 km by road.</span></li>
+          <li><strong data-i18n="transportJalnaBus">Jalna Bus Stand</strong><span data-i18n="transportJalnaBusInfo">About 58 km by road.</span></li>
+        </ul>
+      </div>
+      <div class="transport-group">
+        <h3><span class="transport-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18V5.8A2.8 2.8 0 0 1 9.8 3h4.4A2.8 2.8 0 0 1 17 5.8V18M7 8h10M7 13h10M9 18l-2 3m8-3 2 3M5 21h14M10 6h.01M14 6h.01"/></svg></span><span data-i18n="transportRail">Railway</span></h3>
+        <ul>
+          <li><strong data-i18n="transportRanjaniRail">Ranjani Railway Station</strong><span data-i18n="transportRanjaniRailInfo">About 47 km by road (around 31 km straight-line).</span></li>
+          <li><strong data-i18n="transportJalnaRail">Jalna Railway Station</strong><span data-i18n="transportJalnaRailInfo">About 58 km by road.</span></li>
+        </ul>
+      </div>
+      <div class="transport-group">
+        <h3><span class="transport-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 13 7-2 3-7a1.5 1.5 0 0 1 2.8.2l-1 6.1 5.1 2.1a1.2 1.2 0 0 1-.2 2.3l-5.8-.5-2.7 5.3-1.6-.2.5-5.6-6.1 1.3L3 17l3.2-3.1L3 13Z"/></svg></span><span data-i18n="transportAir">Airport</span></h3>
+        <ul>
+          <li><strong data-i18n="transportAirport">Chhatrapati Sambhajinagar Airport / Aurangabad Airport (IXU)</strong><span data-i18n="transportAirportInfo">About 90 km by road; allow around 2 hours.</span></li>
+        </ul>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- =========================================================
+       STEP 5 — PRE-WEDDING PHOTOS
+       ========================================================= -->
+  <section class="page page-gallery" id="pageGallery" aria-hidden="true">
+    <div class="language-switch">
+      <button class="language active" data-lang="en">EN</button>
+      <button class="language" data-lang="mr">मराठी</button>
+    </div>
+
+    <div class="gallery-inner">
+      <div class="section-floral" aria-hidden="true">
+        <span>❈</span><span>✿</span><span>❈</span>
+      </div>
+
+      <p class="section-kicker" data-i18n="galleryKicker">LITTLE MOMENTS, BIG LOVE</p>
+      <h2 class="section-title" data-i18n="galleryTitle">Our Pre-wedding Moments</h2>
+      <p class="gallery-copy" data-i18n="galleryCopy">A few favorite memories from our journey together.</p>
+
+      <section class="photo-carousel" id="photoCarousel"
+           aria-roledescription="carousel" aria-label="Pre-wedding photos"
+           data-i18n-aria="galleryLabel">
+        <figure class="carousel-frame" id="carouselFrame">
+          <img id="preWeddingPhoto" src="images/pre_wed/optimized/1.jpg"
+               width="1200" height="1501"
+               alt="Pre-wedding moment 1" decoding="async">
+        </figure>
+        <output class="carousel-status" id="carouselStatus" aria-live="polite" hidden></output>
+
+        <div class="carousel-controls">
+          <button class="carousel-arrow" id="previousPhoto" type="button" aria-label="Previous photo"
+                  data-i18n-aria="galleryPrevious">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <span class="carousel-count" id="photoCount" aria-live="polite" aria-atomic="true">1 / 16</span>
+          <button class="carousel-arrow" id="nextPhoto" type="button" aria-label="Next photo"
+                  data-i18n-aria="galleryNext">
+            <span aria-hidden="true">›</span>
+          </button>
+        </section>
+
+        <progress class="carousel-progress" id="carouselProgress" max="16" value="1"
+                  aria-label="Photo progress" data-i18n-aria="galleryProgress">1 of 16</progress>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-       STEP 5 — THANK YOU
+       STEP 6 — THANK YOU
        ========================================================= -->
   <section class="page page-thank-you" id="pageThankYou" aria-hidden="true">
     <div class="thank-you-pattern" aria-hidden="true">

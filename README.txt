@@ -1,35 +1,24 @@
-# Aditya & Vaishnavi — Wedding Invitation
+Aditya & Vaishnavi — Wedding Invitation
 
-## Current pages
-1. Theatre curtain opening
-2. Names / wedding date
-3. Welcome + couple illustration
-4. Wedding location
+This is a responsive, static wedding invitation website built with HTML, CSS,
+and JavaScript. It has no package installation or build step.
 
-## Color system
-The whole site intentionally uses one consistent palette:
-- Burgundy / velvet red
-- Antique gold
-- Ivory / warm cream
+Pages and features:
+- Couple names and wedding date over the invitation background
+- Welcome page with the couple's portrait
+- Wedding venue, Google Maps directions, and nearby transport dialog
+- Pre-wedding photo carousel with English and Marathi labels
+- Thank-you page
 
-The green theme from the earlier Step 3 has been removed.
+Images:
+- The background and venue photos use compressed JPEG web copies.
+- Carousel display copies are in images/pre_wed/optimized/. The original,
+  full-resolution photographs remain in images/pre_wed/.
+- The gallery sequence uses 1, 2, and 4–17; 3.jpg was not supplied.
 
-## Palisade font
-The project is prepared to load:
-`fonts/Palisade-Regular.woff2`
-`fonts/Palisade-Regular.woff`
-`fonts/Palisade-Regular.otf`
-
-The Palisade font on 1001 Fonts is listed as personal-use only. For a public/commercial website, obtain the appropriate web/commercial license from the font creator before deploying it.
-
-Source:
-https://www.1001fonts.com/palisade-font.html
-
-If you download the licensed font file, place it in `/fonts/` using one of the filenames above.
-
-## Images
-- `images/monogram-reference.png` = your monogram reference
-- `images/step-3-couple.png` = your second uploaded cartoon couple image
-- `images/location-couple-sunset.png` = your third uploaded sunset couple image
-
-The monogram reference remains in the project as a visual reference; the Step 1 button itself is recreated in HTML/CSS so the A & V can be changed easily.
+GitHub Pages:
+- The repository has an active GitHub Pages build-and-deployment workflow.
+- Push committed changes to the configured publishing branch (main) to
+  trigger deployment. Check the repository's Actions tab for the result.
+- Keep asset paths relative so the site works when hosted from the repository
+  subpath on GitHub Pages.

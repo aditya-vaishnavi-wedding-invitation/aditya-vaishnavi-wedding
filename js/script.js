@@ -51,7 +51,6 @@ const copy = {
     galleryNext: "Next photo",
     galleryProgress: "Photo progress",
     galleryPhotoAlt: "Pre-wedding moment",
-    galleryLoadError: "This photo could not be loaded. Please try another photo.",
     thankKicker: "WITH LOVE & GRATITUDE",
     thankTitle: "Thank You",
     thankCopy: "For joining us on this special day.<br>Your presence is the best gift we could receive."
@@ -101,7 +100,6 @@ const copy = {
     galleryNext: "पुढील फोटो",
     galleryProgress: "फोटो प्रगती",
     galleryPhotoAlt: "लग्नापूर्वीचा क्षण",
-    galleryLoadError: "हा फोटो लोड होऊ शकला नाही. कृपया दुसरा फोटो पाहा.",
     thankKicker: "मनःपूर्वक आभार",
     thankTitle: "धन्यवाद",
     thankCopy: "या खास दिवशी आमच्यासोबत सहभागी झाल्याबद्दल धन्यवाद.<br>आपली उपस्थिती आमच्यासाठी सर्वात सुंदर भेट आहे."
@@ -144,87 +142,18 @@ if (photoCarousel) {
   const frame = document.getElementById("carouselFrame");
   const count = document.getElementById("photoCount");
   const progress = document.getElementById("carouselProgress");
-  const status = document.getElementById("carouselStatus");
-  const photoCache = new Map();
-  let photoRequestId = 0;
   let swipeStart = null;
 
-  function preloadPhoto(index) {
-    const photoNumber = preWeddingPhotoNumbers[
-      (index + preWeddingPhotoNumbers.length) % preWeddingPhotoNumbers.length
-    ];
-    if (photoCache.has(photoNumber)) return photoCache.get(photoNumber);
-
-    const image = new Image();
-    image.decoding = "async";
-    const imagePath = `images/pre_wed/optimized/${photoNumber}.jpg`;
-    const imageReady = new Promise(resolve => {
-      image.addEventListener("load", () => {
-        const decoded = typeof image.decode === "function" ? image.decode() : Promise.resolve();
-        decoded.then(() => resolve(image)).catch(error => {
-          console.error(`Unable to decode carousel photo ${imagePath}.`, error);
-          photoCache.delete(photoNumber);
-          resolve(null);
-        });
-      }, { once: true });
-      image.addEventListener("error", () => {
-        console.error(`Unable to load carousel photo ${imagePath}.`);
-        photoCache.delete(photoNumber);
-        resolve(null);
-      }, { once: true });
-      image.src = imagePath;
-    });
-
-    photoCache.set(photoNumber, imageReady);
-    return imageReady;
-  }
-
-  function preloadAdjacentPhotos(index) {
-    const nearbyNumbers = new Set([
-      preWeddingPhotoNumbers[(index - 1 + preWeddingPhotoNumbers.length) % preWeddingPhotoNumbers.length],
-      preWeddingPhotoNumbers[index],
-      preWeddingPhotoNumbers[(index + 1) % preWeddingPhotoNumbers.length]
-    ]);
-
-    photoCache.forEach((_, photoNumber) => {
-      if (!nearbyNumbers.has(photoNumber)) photoCache.delete(photoNumber);
-    });
-    preloadPhoto(index - 1);
-    preloadPhoto(index + 1);
-  }
-
   function showPhoto(nextIndex) {
-    const targetIndex = (nextIndex + preWeddingPhotoNumbers.length) % preWeddingPhotoNumbers.length;
-    const photoNumber = preWeddingPhotoNumbers[targetIndex];
-    const requestId = ++photoRequestId;
-    status.hidden = true;
+    photoIndex = (nextIndex + preWeddingPhotoNumbers.length) % preWeddingPhotoNumbers.length;
+    const photoNumber = preWeddingPhotoNumbers[photoIndex];
+    const lang = document.documentElement.lang === "mr" ? "mr" : "en";
 
-    preloadPhoto(targetIndex).then(loadedPhoto => {
-      if (requestId !== photoRequestId) return;
-      if (!loadedPhoto) {
-        const lang = document.documentElement.lang === "mr" ? "mr" : "en";
-        status.textContent = copy[lang].galleryLoadError;
-        status.hidden = false;
-        return;
-      }
-
-      photoIndex = targetIndex;
-      const lang = document.documentElement.lang === "mr" ? "mr" : "en";
-      photo.src = loadedPhoto.src;
-      photo.alt = `${copy[lang].galleryPhotoAlt} ${photoNumber}`;
-      count.textContent = `${String(photoIndex + 1).padStart(2, "0")} / ${String(preWeddingPhotoNumbers.length).padStart(2, "0")}`;
-      progress.value = photoIndex + 1;
-      preloadAdjacentPhotos(photoIndex);
-    });
+    photo.src = `images/pre_wed/${photoNumber}.jpg`;
+    photo.alt = `${copy[lang].galleryPhotoAlt} ${photoNumber}`;
+    count.textContent = `${String(photoIndex + 1).padStart(2, "0")} / ${String(preWeddingPhotoNumbers.length).padStart(2, "0")}`;
+    progress.value = photoIndex + 1;
   }
-
-  const galleryObserver = new IntersectionObserver(entries => {
-    if (entries.some(entry => entry.isIntersecting)) {
-      preloadAdjacentPhotos(photoIndex);
-      galleryObserver.disconnect();
-    }
-  }, { rootMargin: "300px" });
-  galleryObserver.observe(photoCarousel);
 
   document.getElementById("previousPhoto").addEventListener("click", () => {
     showPhoto(photoIndex - 1);

@@ -4,6 +4,17 @@
    Mobile first
    ========================================================= */
 
+@font-face {
+  font-family: "Palisade";
+  src:
+    url("../fonts/Palisade-Regular.woff2") format("woff2"),
+    url("../fonts/Palisade-Regular.woff") format("woff"),
+    url("../fonts/Palisade-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --burgundy-950: #350704;
   --burgundy-900: #470906;
@@ -1178,7 +1189,7 @@ button:focus-visible {
   background-color: var(--card-paper);
   background-image:
     linear-gradient(rgba(251,247,239,.54), rgba(251,247,239,.62)),
-    url("../images/names-background.jpg");
+    url("../images/names-background.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1563,13 +1574,6 @@ button:focus-visible {
   object-fit: cover;
   object-position: center;
   border-radius: 7px;
-}
-
-.carousel-status:not([hidden]) {
-  display: block;
-  margin: 10px auto 0;
-  color: var(--burgundy-800);
-  font: 600 14px/1.5 var(--body);
 }
 
 .carousel-controls {

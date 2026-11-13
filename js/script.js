@@ -24,7 +24,9 @@ const copy = {
     locationTitle: "Wedding Location",
     locationName: "Shivtirth Mangal Karyalaya Va Lawns Tirthpuri",
     locationCity: "Tirthpuri, Maharashtra",
-    directions: "GET DIRECTIONS",
+    directions: "Locate on map",
+    themeToDark: "Switch to dark mode",
+    themeToLight: "Switch to light mode",
     transportButton: "NEARBY TRANSPORT",
     transportKicker: "PLAN YOUR JOURNEY",
     transportTitle: "Nearby Transport",
@@ -75,7 +77,9 @@ const copy = {
     locationTitle: "विवाह स्थळ",
     locationName: "शिवतीर्थ मंगल कार्यालय वा लॉन तीर्थपुरी",
     locationCity: "तीर्थपुरी, महाराष्ट्र",
-    directions: "मार्ग पहा",
+    directions: "नकाशावर ठिकाण पहा",
+    themeToDark: "डार्क मोड सुरू करा",
+    themeToLight: "लाईट मोड सुरू करा",
     transportButton: "जवळची वाहतूक",
     transportKicker: "तुमचा प्रवास नियोजित करा",
     transportTitle: "जवळचे वाहतूक पर्याय",
@@ -110,6 +114,31 @@ const copy = {
   }
 };
 
+let currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+
+function updateThemeToggleLabels() {
+  const lang = document.documentElement.lang === "mr" ? "mr" : "en";
+  const labelKey = currentTheme === "dark" ? "themeToLight" : "themeToDark";
+
+  document.querySelectorAll(".theme-toggle").forEach(button => {
+    button.dataset.i18nAria = labelKey;
+    button.setAttribute("aria-label", copy[lang][labelKey]);
+  });
+}
+
+function setTheme(theme, persist = false) {
+  currentTheme = theme;
+  document.documentElement.dataset.theme = theme;
+  document.querySelector('meta[name="theme-color"]').content =
+    theme === "dark" ? "#211c1c" : "#64130f";
+
+  if (persist) {
+    localStorage.setItem("wedding-invitation-theme", theme);
+  }
+
+  updateThemeToggleLabels();
+}
+
 function setLanguage(lang) {
   document.documentElement.lang = lang === "mr" ? "mr" : "en";
 
@@ -127,6 +156,8 @@ function setLanguage(lang) {
     element.setAttribute("aria-label", copy[lang][element.dataset.i18nAria]);
   });
 
+  updateThemeToggleLabels();
+
   const currentPhoto = document.getElementById("preWeddingPhoto");
   if (currentPhoto) {
     currentPhoto.alt = `${copy[lang].galleryPhotoAlt} ${preWeddingPhotoNumbers[photoIndex]}`;
@@ -137,7 +168,21 @@ document.querySelectorAll(".language").forEach(button => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
+document.querySelectorAll(".theme-toggle").forEach(button => {
+  button.addEventListener("click", () => {
+    setTheme(currentTheme === "dark" ? "light" : "dark", true);
+  });
+});
+
 setLanguage("en");
+setTheme(currentTheme);
+
+const themePreference = window.matchMedia("(prefers-color-scheme: dark)");
+if (!localStorage.getItem("wedding-invitation-theme")) {
+  themePreference.addEventListener("change", event => {
+    setTheme(event.matches ? "dark" : "light");
+  });
+}
 
 const photoCarousel = document.getElementById("photoCarousel");
 

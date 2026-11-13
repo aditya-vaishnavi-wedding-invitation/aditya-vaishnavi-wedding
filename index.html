@@ -10,6 +10,13 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://adityavaishnavi.runs-at.dev/">
   <title>Aditya ❤️ Vaishnavi | Wedding Invitation</title>
+  <script>
+    const savedTheme = localStorage.getItem("wedding-invitation-theme");
+    const initialTheme = savedTheme === "light" || savedTheme === "dark"
+      ? savedTheme
+      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.dataset.theme = initialTheme;
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,6 +27,10 @@
        ========================================================= -->
   <section class="page page-names" id="pageNames" aria-hidden="false">
     <div class="language-switch">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -65,6 +76,10 @@
        ========================================================= -->
   <section class="page page-welcome" id="pageWelcome" aria-hidden="true">
     <div class="language-switch language-dark">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -98,6 +113,10 @@
        ========================================================= -->
   <section class="page page-location" id="pageLocation" aria-hidden="true">
     <div class="language-switch">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -110,16 +129,131 @@
       <p class="section-kicker" data-i18n="locationKicker">THE CELEBRATION</p>
       <h2 class="section-title" data-i18n="locationTitle">Wedding Location</h2>
 
-      <figure class="location-photo">
-        <img src="images/location-couple-sunset.png"
-             alt="Couple under a floral wedding canopy at sunset">
+      <figure class="location-illustration" role="img"
+              aria-label="Bride and groom together beneath a flower-decorated beach wedding canopy at sunset">
+        <svg viewBox="0 0 920 832" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="sky" x2="0" y2="1">
+              <stop stop-color="#f2b99f"/>
+              <stop offset=".62" stop-color="#fffaf4"/>
+              <stop offset="1" stop-color="#f9e7df"/>
+            </linearGradient>
+            <linearGradient id="sunset" x2="0" y2="1">
+              <stop stop-color="#e86b55"/>
+              <stop offset="1" stop-color="#f4b39b"/>
+            </linearGradient>
+            <linearGradient id="water" x2="0" y2="1">
+              <stop stop-color="#77c8bb"/>
+              <stop offset=".55" stop-color="#a8ddd2"/>
+              <stop offset="1" stop-color="#d5eee5"/>
+            </linearGradient>
+            <linearGradient id="drape" x2="1">
+              <stop stop-color="#e7a795" stop-opacity=".48"/>
+              <stop offset=".48" stop-color="#fffaf5" stop-opacity=".78"/>
+              <stop offset="1" stop-color="#fff" stop-opacity=".45"/>
+            </linearGradient>
+            <linearGradient id="gown" x2="1">
+              <stop stop-color="#fffaf5"/>
+              <stop offset=".58" stop-color="#fbe8df"/>
+              <stop offset="1" stop-color="#e99a7c"/>
+            </linearGradient>
+            <linearGradient id="shirt" x2="1">
+              <stop stop-color="#e8a58d"/>
+              <stop offset=".48" stop-color="#fff0e7"/>
+              <stop offset="1" stop-color="#e8a58d"/>
+            </linearGradient>
+            <linearGradient id="post" x2="1">
+              <stop stop-color="#58282a"/>
+              <stop offset=".48" stop-color="#8f4439"/>
+              <stop offset="1" stop-color="#5a2929"/>
+            </linearGradient>
+          </defs>
+
+          <path fill="url(#sky)" d="M0 0h920v832H0z"/>
+          <circle cx="448" cy="287" r="77" fill="url(#sunset)"/>
+          <path fill="#f3b99f" d="M0 392 155 434v37H0zm920 0-171 43v28h171z"/>
+          <path fill="url(#water)" d="M0 466h920v168H0z"/>
+          <path fill="#fff" opacity=".9" d="M0 521c112 8 164-4 272 1 101 5 167-8 281-1 116 7 211-7 367 0v5c-156-7-251 7-367 0-114-7-180 6-281 1-108-5-160 7-272-1zm0 69c126 6 182-8 299-1 102 6 183-7 291-1 110 6 188-5 330 0v6c-142-5-220 6-330 0-108-6-189 7-291 1-117-7-173 7-299 1z"/>
+          <path fill="#fff7f1" d="M0 626c139 18 257 9 390 4 160-6 310 15 530-2v204H0z"/>
+          <path fill="#f6d5c7" opacity=".62" d="M0 704c172 21 281 24 419 1 182-30 322-8 501 12v115H0z"/>
+
+          <g opacity=".95">
+            <path fill="#c77861" d="M153 53h24v48h-24zm572 0h24v48h-24z"/>
+            <path fill="#75332f" d="M85 100h737v24H85z"/>
+            <path fill="#cf8168" d="M177 100h645v24H177z"/>
+            <path fill="#fff4e9" d="M85 100h737v7H85z"/>
+          </g>
+
+          <g fill="url(#drape)">
+            <path d="M115 101h220c-17 54-34 113-63 174-31 66-70 121-112 169-17 20-14 48 1 88 23 61 39 146 43 258h-19c-6-127-28-219-50-275-19-48-29-81-20-115 12-48 53-95 71-159 15-53 20-99 10-140h-81z"/>
+            <path d="M805 101H585c17 54 34 113 63 174 31 66 70 121 112 169 17 20 14 48-1 88-23 61-39 146-43 258h19c6-127 28-219 50-275 19-48 29-81 20-115-12-48-53-95-71-159-15-53-20-99-10-140h81z"/>
+          </g>
+          <path fill="#fff" opacity=".24" d="M205 102h16c12 105-17 192-59 278-21 44-27 64-12 103-11-28-15-49-8-70 17-50 47-94 63-154 14-52 13-106 0-157z"/>
+          <path fill="#fff" opacity=".24" d="M715 102h-16c-12 105 17 192 59 278 21 44 27 64 12 103 11-28 15-49 8-70-17-50-47-94-63-154-14-52-13-106 0-157z"/>
+          <path fill="url(#post)" d="M153 100h23v690h-23zm574 0h23v690h-23z"/>
+
+          <g fill="#43262d">
+            <path d="M450 105c-42-9-83-6-129 25 43-20 84-26 129-25z"/>
+            <path d="M450 105c-48 0-88 16-132 53 42-27 81-43 132-53z"/>
+            <path d="M450 106c-43 10-81 35-116 78 35-31 74-59 116-78z"/>
+            <path d="M450 106c-38 15-69 45-97 94 30-39 63-71 97-94z"/>
+            <path d="M450 106c-33 20-59 52-76 101 21-41 48-76 76-101z"/>
+            <path d="M450 105c42-9 83-6 129 25-43-20-84-26-129-25z"/>
+            <path d="M450 105c48 0 88 16 132 53-42-27-81-43-132-53z"/>
+            <path d="M450 106c43 10 81 35 116 78-35-31-74-59-116-78z"/>
+            <path d="M450 106c38 15 69 45 97 94-30-39-63-71-97-94z"/>
+            <path d="M450 106c33 20 59 52 76 101-21-41-48-76-76-101z"/>
+          </g>
+          <g fill="#43262d">
+            <path d="M404 92c9-17 26-21 41-9l13 19-14 24-29-2-17-17z"/>
+            <path d="M452 77c14-13 32-9 40 6l4 24-22 17-25-11-9-20z"/>
+            <path d="M476 96c17-11 34-3 38 14l-2 21-25 12-21-17 1-20z"/>
+            <path d="M422 109c8-17 27-20 40-7l10 20-17 21-25-6-12-17z"/>
+          </g>
+            <path d="M400 80q25-13 43 7l13 27-30 25-39-21-9-20zm77-10q-24 13-18 38l16 30 34-10 8-41-21-21zm-31 34q21-24 45-8l20 25-23 31-37-7-15-23z"/>
+          </g>
+          <g fill="#d96d5d">
+            <circle cx="423" cy="104" r="11"/><circle cx="443" cy="92" r="10"/>
+            <circle cx="460" cy="108" r="11"/><circle cx="480" cy="96" r="9"/>
+            <circle cx="493" cy="112" r="10"/><circle cx="445" cy="121" r="10"/>
+            <circle cx="468" cy="126" r="9"/><circle cx="410" cy="117" r="8"/>
+          </g>
+          <g fill="#f19a7d">
+            <circle cx="423" cy="104" r="4"/><circle cx="443" cy="92" r="4"/>
+            <circle cx="460" cy="108" r="4"/><circle cx="480" cy="96" r="4"/>
+            <circle cx="493" cy="112" r="4"/><circle cx="445" cy="121" r="4"/>
+            <circle cx="468" cy="126" r="4"/>
+          </g>
+
+          <g>
+            <path fill="url(#gown)" d="M421 373c-20 4-30 20-34 48-4 35-7 78-12 117-7 58-19 118-37 172-10 31-27 48-60 46 29 18 58 13 89 11l111 0c-12-40-18-84-15-130 3-47 8-96 2-143-4-35-11-77-18-101-5-18-14-25-26-22z"/>
+            <path fill="#f2b49a" d="M428 392c11 12 15 36 22 67 8 34 18 66 35 91l15 18c6 7 14 5 16-2 2-6-4-15-10-23-19-25-30-61-37-96-6-28-12-49-27-59z"/>
+            <path fill="#51282e" d="M400 354c-8-25-1-52 21-62 19-9 39 0 44 20 4 16-3 29 8 42 6 8 12 11 16 18-12 2-21-2-29-10-9-8-16-15-25-16-9-2-17 4-21 14-4 11-4 28 1 43-15-8-23-24-20-49z"/>
+            <path fill="#d88f73" d="M430 328c9-5 20-2 25 7 4 8 1 18-7 24l-11 8-7-11-10-7 8-8z"/>
+            <path fill="#51282e" d="M410 351c-10 18-8 34 1 48 7 11 6 23 1 37-5 15-2 27 7 38 0-23 9-38 14-52 5-16 2-31-7-45z"/>
+
+            <path fill="url(#shirt)" d="M503 369c15-8 30-6 43 1 19 11 26 32 29 62l5 93c-17 9-39 10-67 5-11-20-18-45-21-73-4-37-5-72 11-88z"/>
+            <path fill="#d38a70" d="M490 326c-2-22 11-42 32-43 23-1 39 16 37 37-1 17-9 29-24 36l-9 13-18-9 1-12c-13-3-18-11-19-22z"/>
+            <path fill="#43262d" d="M489 323c-3-20 9-38 28-41 20-4 37 8 41 25 2 10-1 18-8 25-3-11-8-17-17-18-8 10-20 16-38 15z"/>
+            <path fill="url(#shirt)" d="M510 391c-10 21-17 51-23 80-5 24-11 43-21 61-5 9-7 18-1 23 6 5 14-1 21-10 20-28 33-63 40-97 5-24 5-43-2-57z"/>
+            <path fill="#6c3338" d="M506 528c21-9 45-8 64 1 4 37 0 75-3 113-3 41-4 77-8 107h-25l-13-126-15 126h-26c-2-33-2-67-1-105 1-48 2-87 0-116z"/>
+            <path fill="#d58b70" d="M485 531c8 2 14 8 15 16 1 9-5 15-13 15-8 0-13-7-13-15 0-7 4-13 11-16z"/>
+            <path fill="#704d45" d="M519 747h28l4 10c-17 4-34 4-49 0l1-5zm30 0h27l7 9c-14 8-31 9-47 5v-6z"/>
+          </g>
+
+          <path fill="#fff" opacity=".35" d="M188 465h542v4H188zm0 164h542v5H188z"/>
+        </svg>
       </figure>
 
       <div class="location-card">
         <div class="pin">⌖</div>
         <h3 data-i18n="locationName">Shivtirth Mangal Karyalaya Va Lawns Tirthpuri</h3>
         <p data-i18n="locationCity">Tirthpuri, Maharashtra</p>
-        <button class="map-button" type="button" data-i18n="directions" id="directionsBtn">GET DIRECTIONS</button>
+        <button class="map-button" type="button" id="directionsBtn">
+          <img class="maps-icon" src="https://www.gstatic.com/images/branding/product/1x/maps_48dp.png"
+               alt="" aria-hidden="true" width="24" height="24">
+          <span data-i18n="directions">Locate on map</span>
+        </button>
         <button class="transport-button" type="button" data-i18n="transportButton" id="transportButton">NEARBY TRANSPORT</button>
       </div>
     </div>
@@ -165,6 +299,10 @@
        ========================================================= -->
   <section class="page page-gallery" id="pageGallery" aria-hidden="true">
     <div class="language-switch">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 1.42 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -216,6 +354,10 @@
     </div>
 
     <div class="language-switch thank-language">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
+        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 1.42 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>

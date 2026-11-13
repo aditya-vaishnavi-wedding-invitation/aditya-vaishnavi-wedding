@@ -247,6 +247,35 @@ button { font: inherit; }
   letter-spacing: .10em;
 }
 
+.rsvp-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  margin: 22px auto 0;
+  padding: 12px 22px;
+  border: 1px solid var(--gold-600);
+  border-radius: 2px;
+  background: var(--burgundy-800);
+  box-shadow: 0 4px 12px rgba(53,7,4,.16);
+  color: #fff8e8;
+  font: 600 12px/1.4 var(--body);
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.rsvp-button:hover {
+  background: var(--burgundy-700);
+  box-shadow: 0 7px 16px rgba(53,7,4,.2);
+  transform: translateY(-2px);
+}
+
+.rsvp-button:focus-visible {
+  outline: 3px solid var(--gold-600);
+  outline-offset: 3px;
+}
+
 .scroll-cue {
   margin-top: clamp(1.5rem, 5vh, 3.625rem);
   color: var(--ink);

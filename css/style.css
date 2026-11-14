@@ -194,6 +194,51 @@ button { font: inherit; }
   height: 6px;
 }
 
+.page-heart-pattern {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  color: #8f2638;
+  opacity: .38;
+  pointer-events: none;
+}
+
+.page-heart-pattern span {
+  position: absolute;
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+
+.page-heart-pattern span:nth-child(1) {
+  top: 16%;
+  left: 7%;
+  font-size: clamp(42px, 8vw, 76px);
+  transform: rotate(-17deg);
+}
+
+.page-heart-pattern span:nth-child(2) {
+  top: 27%;
+  right: 7%;
+  font-size: clamp(30px, 6vw, 58px);
+  transform: rotate(14deg);
+}
+
+.page-heart-pattern span:nth-child(3) {
+  bottom: 17%;
+  left: 11%;
+  font-size: clamp(24px, 4vw, 40px);
+  transform: rotate(12deg);
+}
+
+.page-heart-pattern span:nth-child(4) {
+  right: 10%;
+  bottom: 11%;
+  font-size: clamp(44px, 7vw, 68px);
+  transform: rotate(-12deg);
+}
+
 @keyframes confetti-fall {
   0% {
     top: -12px;
@@ -2325,6 +2370,11 @@ button:focus-visible {
   color: #d3c2b5;
 }
 
+:root[data-theme="dark"] .page-heart-pattern {
+  color: #f2a0ad;
+  opacity: .46;
+}
+
 :root[data-theme="dark"] .page-welcome {
   background:
     radial-gradient(ellipse at 50% 48%, rgba(147,50,39,.2), transparent 47%),
@@ -2493,6 +2543,34 @@ button:focus-visible {
 }
 
 @media (max-width: 600px) {
+  .page-heart-pattern {
+    opacity: .5;
+  }
+
+  .page-heart-pattern span:nth-child(1) {
+    top: 8%;
+    left: 3%;
+    font-size: clamp(44px, 13vw, 58px);
+  }
+
+  .page-heart-pattern span:nth-child(2) {
+    top: 34%;
+    right: 3%;
+    font-size: clamp(36px, 10vw, 46px);
+  }
+
+  .page-heart-pattern span:nth-child(3) {
+    bottom: 16%;
+    left: 4%;
+    font-size: clamp(30px, 8vw, 38px);
+  }
+
+  .page-heart-pattern span:nth-child(4) {
+    right: 3%;
+    bottom: 8%;
+    font-size: clamp(44px, 13vw, 58px);
+  }
+
   .page-welcome {
     padding-right: 12px;
     padding-left: 12px;

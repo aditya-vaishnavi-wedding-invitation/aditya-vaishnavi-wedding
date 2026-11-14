@@ -237,6 +237,36 @@ button { font: inherit; }
   letter-spacing: .01em;
 }
 
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 2.5vw, 20px);
+  width: min(100%, 520px);
+  margin: 24px auto 0;
+  color: #c99f92;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-unit {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.countdown-value {
+  font-family: var(--serif);
+  font-size: clamp(2.35rem, 8vw, 3.75rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.countdown-label {
+  color: #5a514f;
+  font: 500 14px/1.3 Arial, Helvetica, sans-serif;
+}
+
 .intro {
   margin: clamp(2rem, 8vh, 5.625rem) auto 0;
   font-size: clamp(12px, 3.1vw, 15px);
@@ -1575,6 +1605,7 @@ button:focus-visible {
 .page-names .eyebrow { animation: card-rise .8s .14s both cubic-bezier(.2,.7,.25,1); }
 .page-names .couple-names { animation: card-rise .9s .25s both cubic-bezier(.2,.7,.25,1); }
 .page-names .wedding-date { animation: card-rise .8s .38s both cubic-bezier(.2,.7,.25,1); }
+.page-names .countdown { animation: card-rise .8s .44s both cubic-bezier(.2,.7,.25,1); }
 .page-names .intro { animation: card-rise .8s .48s both cubic-bezier(.2,.7,.25,1); }
 .page-names .scroll-cue { animation: card-rise .8s .58s both cubic-bezier(.2,.7,.25,1); }
 
@@ -1779,6 +1810,7 @@ button:focus-visible {
   .page-names .eyebrow,
   .page-names .couple-names,
   .page-names .wedding-date,
+  .page-names .countdown,
   .page-names .intro,
   .page-names .scroll-cue,
   .page-welcome[aria-hidden="false"] .welcome-inner,
@@ -1826,6 +1858,23 @@ button:focus-visible {
   .page-names .wedding-date,
   .page-thank-you .thank-date {
     letter-spacing: .04em;
+  }
+
+  .page-names .countdown {
+    gap: 6px;
+    margin-top: 20px;
+  }
+
+  .countdown-unit {
+    gap: 9px;
+  }
+
+  .countdown-value {
+    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  }
+
+  .countdown-label {
+    font-size: 12px;
   }
 
   .page-welcome .welcome-inner {
@@ -2157,6 +2206,14 @@ button:focus-visible {
 
 :root[data-theme="dark"] .page-names .wedding-date {
   color: #edcc83;
+}
+
+:root[data-theme="dark"] .page-names .countdown {
+  color: #e2b9aa;
+}
+
+:root[data-theme="dark"] .page-names .countdown-label {
+  color: #d3c2b5;
 }
 
 :root[data-theme="dark"] .page-welcome {

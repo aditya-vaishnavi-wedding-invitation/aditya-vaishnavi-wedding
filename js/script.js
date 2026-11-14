@@ -14,6 +14,11 @@ const copy = {
     eyebrow: "YOU ARE CORDIALLY INVITED TO<br>CELEBRATE THE WEDDING OF",
     date: "28 DECEMBER 2026",
     eventTime: "Monday, 7:19 PM",
+    countdownLabel: "Time until the wedding",
+    countdownDays: "Days",
+    countdownHours: "Hours",
+    countdownMinutes: "Mins",
+    countdownSeconds: "Secs",
     intro: "WE WOULD LIKE TO INVITE YOU TO<br>CELEBRATE WITH US ON THE MOST<br>SPECIAL DAY OF OUR LIVES.",
     rsvpButton: "RSVP ON WHATSAPP",
     scroll: "SCROLL",
@@ -65,6 +70,11 @@ const copy = {
     eyebrow: "आपणास आमच्या विवाह सोहळ्यास<br>मनःपूर्वक आमंत्रण",
     date: "२८ डिसेंबर २०२६",
     eventTime: "सोमवार, सायंकाळी ७:१९",
+    countdownLabel: "विवाह सोहळ्यापर्यंतचा वेळ",
+    countdownDays: "दिवस",
+    countdownHours: "तास",
+    countdownMinutes: "मिनिटे",
+    countdownSeconds: "सेकंद",
     intro: "आमच्या आयुष्यातील या खास दिवशी<br>आपण आमच्यासोबत यावे,<br>हीच मनापासून इच्छा.",
     rsvpButton: "व्हॉट्सॲपवर उपस्थिती कळवा",
     scroll: "पुढे",
@@ -182,6 +192,30 @@ if (!localStorage.getItem("wedding-invitation-theme")) {
   themePreference.addEventListener("change", event => {
     setTheme(event.matches ? "dark" : "light");
   });
+}
+
+const weddingCountdown = document.getElementById("weddingCountdown");
+if (weddingCountdown) {
+  const weddingTime = new Date("2026-12-28T19:19:00+05:30").getTime();
+  const days = document.getElementById("countdownDays");
+  const hours = document.getElementById("countdownHours");
+  const minutes = document.getElementById("countdownMinutes");
+  const seconds = document.getElementById("countdownSeconds");
+
+  function updateCountdown() {
+    const remainingSeconds = Math.max(0, Math.floor((weddingTime - Date.now()) / 1000));
+    days.textContent = String(Math.floor(remainingSeconds / 86400));
+    hours.textContent = String(Math.floor((remainingSeconds % 86400) / 3600)).padStart(2, "0");
+    minutes.textContent = String(Math.floor((remainingSeconds % 3600) / 60)).padStart(2, "0");
+    seconds.textContent = String(remainingSeconds % 60).padStart(2, "0");
+
+    if (remainingSeconds === 0) {
+      window.clearInterval(countdownInterval);
+    }
+  }
+
+  const countdownInterval = window.setInterval(updateCountdown, 1000);
+  updateCountdown();
 }
 
 const photoCarousel = document.getElementById("photoCarousel");

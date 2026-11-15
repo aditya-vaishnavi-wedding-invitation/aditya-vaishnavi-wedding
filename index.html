@@ -3,20 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#64130f">
+  <meta name="theme-color" content="#1b2038">
   <meta name="description" content="With love and blessings, we invite you to celebrate the wedding of Aditya and Vaishnavi. Join us for our special day on 28 December 2026.">
   <meta property="og:title" content="Aditya &amp; Vaishnavi | Wedding Invitation">
   <meta property="og:description" content="Together with our families, we invite you to celebrate our wedding.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://adityavaishnavi.runs-at.dev/">
   <title>Aditya ❤️ Vaishnavi | Wedding Invitation</title>
-  <script>
-    const savedTheme = localStorage.getItem("wedding-invitation-theme");
-    const initialTheme = savedTheme === "light" || savedTheme === "dark"
-      ? savedTheme
-      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.dataset.theme = initialTheme;
-  </script>
+  <script>document.documentElement.dataset.theme = "dark";</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,21 +22,7 @@
   <section class="page page-names" id="pageNames" aria-hidden="false">
     <div class="names-rose-frame" aria-hidden="true">
     </div>
-    <img class="names-floral-corner names-floral-corner-top" src="images/rose-corner-reference.png" alt="" aria-hidden="true">
-    <img class="names-floral-corner names-floral-corner-left names-floral-corner-top" src="images/rose-corner-reference.png" alt="" aria-hidden="true">
-    <div class="names-floral-band names-floral-band-top" aria-hidden="true">
-      <img src="images/rose-corner-reference.png" alt="">
-    </div>
-    <img class="names-floral-corner" src="images/rose-corner-reference.png" alt="" aria-hidden="true">
-    <img class="names-floral-corner names-floral-corner-left" src="images/rose-corner-reference.png" alt="" aria-hidden="true">
-    <div class="names-floral-band" aria-hidden="true">
-      <img src="images/rose-corner-reference.png" alt="">
-    </div>
     <div class="language-switch">
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -51,6 +31,16 @@
       <div class="floral-line" aria-hidden="true">
         <span>✦</span><span>❈</span><span>✦</span>
       </div>
+      <div class="ganesh-invocation">
+        <p class="ganesh-title" data-i18n="ganeshBlessing">॥ Shree Ganeshay Namah ॥</p>
+        <div class="ganesh-motifs" aria-hidden="true">
+          <img class="ganesh-lotus" src="images/lotus-card.png" alt="">
+          <img class="ganesh-symbol" src="images/ganesha-card.png" alt="">
+          <img class="ganesh-lotus" src="images/lotus-card.png" alt="">
+        </div>
+      </div>
+
+
 
       <p class="eyebrow" data-i18n="eyebrow">
         YOU ARE CORDIALLY INVITED TO<br>
@@ -59,12 +49,14 @@
 
       <h1 class="couple-names">
         <span data-i18n="groomName">Aditya</span>
+        <em class="designation" data-i18n="groomDesignation">( Btech Computer Engineer )</em>
         <small>&amp;</small>
         <span data-i18n="brideName">Vaishnavi</span>
+        <em class="designation" data-i18n="brideDesignation">( Btech Civil Engineer )</em>
       </h1>
 
       <p class="wedding-date" data-i18n="date">28 DECEMBER 2026</p>
-      <p class="event-time" data-i18n="eventTime">Monday, 7:19 PM</p>
+      <p class="event-time" style="margin-bottom: 20px;" data-i18n="eventTime">Monday, 7:19 PM</p>
 
       <div class="countdown" id="weddingCountdown" role="timer"
            aria-label="Time until the wedding" data-i18n-aria="countdownLabel">
@@ -96,6 +88,11 @@
          href="https://wa.me/917447231899?text=Hi%20Aditya%20%21%20Marking%20my%20calendar%20in%20bold%20for%2028th%20Dec%202026%20%E2%80%94%20will%20definitely%20be%20there%20to%20celebrate%20your%20big%20day%21"
          target="_blank" rel="noopener noreferrer" data-i18n="rsvpButton">RSVP ON WHATSAPP</a>
 
+      <a class="download-card-button"
+         href="downloads/Wedding_card_Aditya_Vaishnavi.pdf"
+         download="Wedding_card_Aditya_Vaishnavi.pdf"
+         data-i18n="downloadWeddingCard">DOWNLOAD INVITATION PDF</a>
+
       <div class="scroll-cue">
         <span data-i18n="scroll">SCROLL</span>
         <b>↓</b>
@@ -115,11 +112,8 @@
     <div class="page-heart-pattern" aria-hidden="true">
       <span>♡</span><span>♡</span><span>♥</span><span>♡</span>
     </div>
+    <img class="kolam-decoration kolam-welcome" src="images/kolam-card.png" alt="" aria-hidden="true">
     <div class="language-switch language-dark">
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -199,10 +193,6 @@
       <span>♡</span><span>♡</span><span>♥</span><span>♡</span>
     </div>
     <div class="language-switch">
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -216,118 +206,158 @@
       <h2 class="section-title" data-i18n="locationTitle">Wedding Location</h2>
 
       <figure class="location-illustration" role="img"
-              aria-label="Bride and groom together beneath a flower-decorated beach wedding canopy at sunset">
+              aria-label="Bride and groom standing together under a marigold-decorated wedding mandap at night, with glowing diyas and a rangoli">
         <svg viewBox="0 0 920 832" aria-hidden="true" focusable="false">
           <defs>
-            <linearGradient id="sky" x2="0" y2="1">
-              <stop stop-color="#f2b99f"/>
-              <stop offset=".62" stop-color="#fffaf4"/>
-              <stop offset="1" stop-color="#f9e7df"/>
+            <linearGradient id="locSky" x2="0" y2="1">
+              <stop stop-color="#12172e"/><stop offset=".55" stop-color="#27316a"/><stop offset="1" stop-color="#4a3a6b"/>
             </linearGradient>
-            <linearGradient id="sunset" x2="0" y2="1">
-              <stop stop-color="#e86b55"/>
-              <stop offset="1" stop-color="#f4b39b"/>
+            <radialGradient id="locGlow" cx=".5" cy=".5" r=".5">
+              <stop stop-color="#f6d98a" stop-opacity=".5"/><stop offset="1" stop-color="#f6d98a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="locLawn" x2="0" y2="1">
+              <stop stop-color="#1c2b45"/><stop offset="1" stop-color="#0d1124"/>
             </linearGradient>
-            <linearGradient id="water" x2="0" y2="1">
-              <stop stop-color="#77c8bb"/>
-              <stop offset=".55" stop-color="#a8ddd2"/>
-              <stop offset="1" stop-color="#d5eee5"/>
+            <linearGradient id="locGold" x2="1">
+              <stop stop-color="#8d6739"/><stop offset=".5" stop-color="#f0d48a"/><stop offset="1" stop-color="#8d6739"/>
             </linearGradient>
-            <linearGradient id="drape" x2="1">
-              <stop stop-color="#e7a795" stop-opacity=".48"/>
-              <stop offset=".48" stop-color="#fffaf5" stop-opacity=".78"/>
-              <stop offset="1" stop-color="#fff" stop-opacity=".45"/>
+            <linearGradient id="locCanopy" x2="0" y2="1">
+              <stop stop-color="#9a2740"/><stop offset="1" stop-color="#5b1427"/>
             </linearGradient>
-            <linearGradient id="gown" x2="1">
-              <stop stop-color="#fffaf5"/>
-              <stop offset=".58" stop-color="#fbe8df"/>
-              <stop offset="1" stop-color="#e99a7c"/>
+            <linearGradient id="locSaree" x2="0" y2="1">
+              <stop stop-color="#cf3a55"/><stop offset="1" stop-color="#7d1730"/>
             </linearGradient>
-            <linearGradient id="shirt" x2="1">
-              <stop stop-color="#e8a58d"/>
-              <stop offset=".48" stop-color="#fff0e7"/>
-              <stop offset="1" stop-color="#e8a58d"/>
+            <linearGradient id="locSherwani" x2="1">
+              <stop stop-color="#e3d4bb"/><stop offset=".5" stop-color="#fbf3e6"/><stop offset="1" stop-color="#d9c8ad"/>
             </linearGradient>
-            <linearGradient id="post" x2="1">
-              <stop stop-color="#58282a"/>
-              <stop offset=".48" stop-color="#8f4439"/>
-              <stop offset="1" stop-color="#5a2929"/>
+            <linearGradient id="locCarpet" x2="0" y2="1">
+              <stop stop-color="#8b2238"/><stop offset="1" stop-color="#4a0f22"/>
             </linearGradient>
+            <filter id="locBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6"/></filter>
+
+            <path id="locRidge" d="M0 540Q120 470 260 525T520 520T780 510T920 498"/>
+            <path id="locBeamLights" d="M150 205H770"/>
+            <path id="locArcs" d="M150 238q62 62 124 0q62 62 124 0q62 62 124 0q62 62 124 0q62 62 124 0"/>
+            <path id="locPillarWrap" d="M190 254q20 40 0 80q-20 40 0 80q20 40 0 80q-20 40 0 80q20 40 0 80"/>
+            <path id="locDiamond" d="M0-8 8 0 0 8-8 0z"/>
+            <g id="locDiya">
+              <circle cy="-12" r="17" fill="#ffd86b" opacity=".5" filter="url(#locBlur)"/>
+              <path d="M-15 0Q0 17 15 0Z" fill="#c98a2e"/>
+              <path d="M-15 0H15" stroke="#f0d48a" stroke-width="2"/>
+              <path d="M0-3Q-8-14 0-26Q8-14 0-3Z" fill="#ffd86b"/>
+            </g>
           </defs>
 
-          <path fill="url(#sky)" d="M0 0h920v832H0z"/>
-          <circle cx="448" cy="287" r="77" fill="url(#sunset)"/>
-          <path fill="#f3b99f" d="M0 392 155 434v37H0zm920 0-171 43v28h171z"/>
-          <path fill="url(#water)" d="M0 466h920v168H0z"/>
-          <path fill="#fff" opacity=".9" d="M0 521c112 8 164-4 272 1 101 5 167-8 281-1 116 7 211-7 367 0v5c-156-7-251 7-367 0-114-7-180 6-281 1-108-5-160 7-272-1zm0 69c126 6 182-8 299-1 102 6 183-7 291-1 110 6 188-5 330 0v6c-142-5-220 6-330 0-108-6-189 7-291 1-117-7-173 7-299 1z"/>
-          <path fill="#fff7f1" d="M0 626c139 18 257 9 390 4 160-6 310 15 530-2v204H0z"/>
-          <path fill="#f6d5c7" opacity=".62" d="M0 704c172 21 281 24 419 1 182-30 322-8 501 12v115H0z"/>
+          <!-- night sky -->
+          <path fill="url(#locSky)" d="M0 0h920v832H0z"/>
+          <g fill="#f6e3a8">
+            <circle cx="70" cy="70" r="2.5"/><circle cx="140" cy="120" r="2"/><circle cx="220" cy="55" r="3"/>
+            <circle cx="300" cy="95" r="2"/><circle cx="380" cy="45" r="2.5"/><circle cx="540" cy="60" r="2"/>
+            <circle cx="610" cy="110" r="2.5"/><circle cx="690" cy="52" r="2"/><circle cx="850" cy="170" r="2.5"/>
+            <circle cx="60" cy="230" r="2"/><circle cx="870" cy="300" r="2"/><circle cx="95" cy="340" r="2.5"/>
+          </g>
+          <path fill="#f3e8da" d="M800 66a38 38 0 1 0 38 54a30 30 0 1 1-38-54z"/>
 
-          <g opacity=".95">
-            <path fill="#c77861" d="M153 53h24v48h-24zm572 0h24v48h-24z"/>
-            <path fill="#75332f" d="M85 100h737v24H85z"/>
-            <path fill="#cf8168" d="M177 100h645v24H177z"/>
-            <path fill="#fff4e9" d="M85 100h737v7H85z"/>
-          </g>
+          <!-- distant hills with fairy lights, lawn -->
+          <path fill="#151c3a" d="M0 540Q120 470 260 525T520 520T780 510T920 498V620H0z"/>
+          <use href="#locRidge" fill="none" stroke="#ffe9a8" stroke-width="4" stroke-linecap="round" stroke-dasharray="0 24" opacity=".7"/>
+          <path fill="url(#locLawn)" d="M0 578Q230 548 460 570T920 562V832H0z"/>
 
-          <g fill="url(#drape)">
-            <path d="M115 101h220c-17 54-34 113-63 174-31 66-70 121-112 169-17 20-14 48 1 88 23 61 39 146 43 258h-19c-6-127-28-219-50-275-19-48-29-81-20-115 12-48 53-95 71-159 15-53 20-99 10-140h-81z"/>
-            <path d="M805 101H585c17 54 34 113 63 174 31 66 70 121 112 169 17 20 14 48-1 88-23 61-39 146-43 258h19c6-127 28-219 50-275 19-48 29-81 20-115-12-48-53-95-71-159-15-53-20-99-10-140h81z"/>
-          </g>
-          <path fill="#fff" opacity=".24" d="M205 102h16c12 105-17 192-59 278-21 44-27 64-12 103-11-28-15-49-8-70 17-50 47-94 63-154 14-52 13-106 0-157z"/>
-          <path fill="#fff" opacity=".24" d="M715 102h-16c-12 105 17 192 59 278 21 44 27 64 12 103 11-28 15-49 8-70-17-50-47-94-63-154-14-52-13-106 0-157z"/>
-          <path fill="url(#post)" d="M153 100h23v690h-23zm574 0h23v690h-23z"/>
+          <!-- warm glow behind the couple -->
+          <circle cx="460" cy="430" r="290" fill="url(#locGlow)"/>
 
-          <g fill="#43262d">
-            <path d="M450 105c-42-9-83-6-129 25 43-20 84-26 129-25z"/>
-            <path d="M450 105c-48 0-88 16-132 53 42-27 81-43 132-53z"/>
-            <path d="M450 106c-43 10-81 35-116 78 35-31 74-59 116-78z"/>
-            <path d="M450 106c-38 15-69 45-97 94 30-39 63-71 97-94z"/>
-            <path d="M450 106c-33 20-59 52-76 101 21-41 48-76 76-101z"/>
-            <path d="M450 105c42-9 83-6 129 25-43-20-84-26-129-25z"/>
-            <path d="M450 105c48 0 88 16 132 53-42-27-81-43-132-53z"/>
-            <path d="M450 106c43 10 81 35 116 78-35-31-74-59-116-78z"/>
-            <path d="M450 106c38 15 69 45 97 94-30-39-63-71-97-94z"/>
-            <path d="M450 106c33 20 59 52 76 101-21-41-48-76-76-101z"/>
-          </g>
-          <g fill="#43262d">
-            <path d="M404 92c9-17 26-21 41-9l13 19-14 24-29-2-17-17z"/>
-            <path d="M452 77c14-13 32-9 40 6l4 24-22 17-25-11-9-20z"/>
-            <path d="M476 96c17-11 34-3 38 14l-2 21-25 12-21-17 1-20z"/>
-            <path d="M422 109c8-17 27-20 40-7l10 20-17 21-25-6-12-17z"/>
-          </g>
-            <path d="M400 80q25-13 43 7l13 27-30 25-39-21-9-20zm77-10q-24 13-18 38l16 30 34-10 8-41-21-21zm-31 34q21-24 45-8l20 25-23 31-37-7-15-23z"/>
-          </g>
-          <g fill="#d96d5d">
-            <circle cx="423" cy="104" r="11"/><circle cx="443" cy="92" r="10"/>
-            <circle cx="460" cy="108" r="11"/><circle cx="480" cy="96" r="9"/>
-            <circle cx="493" cy="112" r="10"/><circle cx="445" cy="121" r="10"/>
-            <circle cx="468" cy="126" r="9"/><circle cx="410" cy="117" r="8"/>
-          </g>
-          <g fill="#f19a7d">
-            <circle cx="423" cy="104" r="4"/><circle cx="443" cy="92" r="4"/>
-            <circle cx="460" cy="108" r="4"/><circle cx="480" cy="96" r="4"/>
-            <circle cx="493" cy="112" r="4"/><circle cx="445" cy="121" r="4"/>
-            <circle cx="468" cy="126" r="4"/>
+          <!-- aisle carpet and rangoli -->
+          <path fill="url(#locCarpet)" d="M385 700H535L650 832H270z"/>
+          <path fill="none" stroke="#d3b778" stroke-width="3" d="M385 700 270 832M535 700 650 832"/>
+          <g fill="none">
+            <ellipse cx="460" cy="778" rx="118" ry="24" stroke="#f0d48a" stroke-width="2" opacity=".85"/>
+            <ellipse cx="460" cy="778" rx="86" ry="17" stroke="#f4a62a" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 11"/>
+            <ellipse cx="460" cy="778" rx="50" ry="10" fill="#e0536e" opacity=".75"/>
+            <ellipse cx="460" cy="778" rx="22" ry="4.5" fill="#ffd86b"/>
           </g>
 
-          <g>
-            <path fill="url(#gown)" d="M421 373c-20 4-30 20-34 48-4 35-7 78-12 117-7 58-19 118-37 172-10 31-27 48-60 46 29 18 58 13 89 11l111 0c-12-40-18-84-15-130 3-47 8-96 2-143-4-35-11-77-18-101-5-18-14-25-26-22z"/>
-            <path fill="#f2b49a" d="M428 392c11 12 15 36 22 67 8 34 18 66 35 91l15 18c6 7 14 5 16-2 2-6-4-15-10-23-19-25-30-61-37-96-6-28-12-49-27-59z"/>
-            <path fill="#51282e" d="M400 354c-8-25-1-52 21-62 19-9 39 0 44 20 4 16-3 29 8 42 6 8 12 11 16 18-12 2-21-2-29-10-9-8-16-15-25-16-9-2-17 4-21 14-4 11-4 28 1 43-15-8-23-24-20-49z"/>
-            <path fill="#d88f73" d="M430 328c9-5 20-2 25 7 4 8 1 18-7 24l-11 8-7-11-10-7 8-8z"/>
-            <path fill="#51282e" d="M410 351c-10 18-8 34 1 48 7 11 6 23 1 37-5 15-2 27 7 38 0-23 9-38 14-52 5-16 2-31-7-45z"/>
+          <!-- mandap platform -->
+          <ellipse cx="460" cy="694" rx="345" ry="40" fill="#2a0f22"/>
+          <ellipse cx="460" cy="674" rx="345" ry="40" fill="#5b1b2c" stroke="#d3b778" stroke-width="2"/>
+          <ellipse cx="460" cy="674" rx="300" ry="32" fill="none" stroke="#d3b778" stroke-opacity=".35"/>
 
-            <path fill="url(#shirt)" d="M503 369c15-8 30-6 43 1 19 11 26 32 29 62l5 93c-17 9-39 10-67 5-11-20-18-45-21-73-4-37-5-72 11-88z"/>
-            <path fill="#d38a70" d="M490 326c-2-22 11-42 32-43 23-1 39 16 37 37-1 17-9 29-24 36l-9 13-18-9 1-12c-13-3-18-11-19-22z"/>
-            <path fill="#43262d" d="M489 323c-3-20 9-38 28-41 20-4 37 8 41 25 2 10-1 18-8 25-3-11-8-17-17-18-8 10-20 16-38 15z"/>
-            <path fill="url(#shirt)" d="M510 391c-10 21-17 51-23 80-5 24-11 43-21 61-5 9-7 18-1 23 6 5 14-1 21-10 20-28 33-63 40-97 5-24 5-43-2-57z"/>
-            <path fill="#6c3338" d="M506 528c21-9 45-8 64 1 4 37 0 75-3 113-3 41-4 77-8 107h-25l-13-126-15 126h-26c-2-33-2-67-1-105 1-48 2-87 0-116z"/>
-            <path fill="#d58b70" d="M485 531c8 2 14 8 15 16 1 9-5 15-13 15-8 0-13-7-13-15 0-7 4-13 11-16z"/>
-            <path fill="#704d45" d="M519 747h28l4 10c-17 4-34 4-49 0l1-5zm30 0h27l7 9c-14 8-31 9-47 5v-6z"/>
+          <!-- sheer drapes -->
+          <g fill="#fff4e0" opacity=".16">
+            <path d="M203 238C262 320 262 420 232 500C215 560 232 610 238 656H203z"/>
+            <path d="M717 238C658 320 658 420 688 500C705 560 688 610 682 656H717z"/>
           </g>
 
-          <path fill="#fff" opacity=".35" d="M188 465h542v4H188zm0 164h542v5H188z"/>
+          <!-- bride -->
+          <path fill="#b02a48" d="M392 372Q388 332 418 328Q450 332 446 372L460 524 432 440Q418 450 404 440L376 524z"/>
+          <path fill="url(#locSaree)" d="M396 408Q418 400 440 408L450 500Q472 592 498 668H336Q364 592 386 500z"/>
+          <path fill="#e8c46a" opacity=".9" d="M398 412 452 520H470L416 408z"/>
+          <path stroke="#f0d48a" stroke-width="6" d="M336 668H498"/>
+          <!-- groom -->
+          <path fill="#efe2cc" d="M468 600H544L540 668H512L506 612L500 668H472z"/>
+          <path fill="url(#locSherwani)" d="M474 410Q506 398 538 410L548 520 544 604H468L464 520z"/>
+          <path fill="#8b2238" d="M478 410Q500 432 540 412L546 470Q510 462 476 442z"/>
+          <path fill="none" stroke="#d3b778" stroke-width="3" d="M492 404 506 432 520 404"/>
+          <g fill="#d3b778"><circle cx="506" cy="474" r="3"/><circle cx="506" cy="500" r="3"/><circle cx="506" cy="526" r="3"/><circle cx="506" cy="552" r="3"/></g>
+          <!-- joined hands -->
+          <path fill="none" stroke="#b02a48" stroke-width="14" stroke-linecap="round" d="M440 416Q456 450 468 490"/>
+          <path fill="none" stroke="#d99a7a" stroke-width="10" stroke-linecap="round" d="M468 490 480 524"/>
+          <path fill="none" stroke="#f3e8da" stroke-width="15" stroke-linecap="round" d="M476 420Q478 470 482 506"/>
+          <circle cx="481" cy="528" r="9" fill="#d99a7a"/>
+          <path fill="none" stroke="#f0d48a" stroke-width="3" stroke-linecap="round" d="M462 484 472 482"/>
+          <!-- faces -->
+          <rect x="410" y="388" width="16" height="22" fill="#d99a7a"/>
+          <circle cx="418" cy="368" r="24" fill="#d99a7a"/>
+          <path fill="#2b1420" d="M394 368Q392 336 418 336Q446 336 442 368Q432 350 418 350Q404 350 394 368z"/>
+          <path fill="none" stroke="#f0d48a" stroke-width="3" stroke-linecap="round" d="M418 336V348"/>
+          <circle cx="418" cy="352" r="3.5" fill="#f0d48a"/>
+          <path fill="none" stroke="#f0d48a" stroke-width="3" d="M406 410Q418 428 430 410"/>
+          <rect x="498" y="386" width="16" height="22" fill="#c98b6b"/>
+          <circle cx="506" cy="364" r="24" fill="#c98b6b"/>
+          <ellipse cx="506" cy="338" rx="31" ry="19" fill="#e0b04a"/>
+          <path fill="none" stroke="#8d6739" stroke-width="2.5" d="M478 340Q506 322 534 340M482 350Q506 334 530 350"/>
+          <path fill="#8b2238" d="M528 330q16-8 22 6-10 2-16 8z"/>
+
+          <!-- mandap pillars, beam, canopy -->
+          <g fill="url(#locGold)">
+            <rect x="177" y="236" width="26" height="424"/><rect x="717" y="236" width="26" height="424"/>
+            <rect x="165" y="236" width="50" height="14" rx="3"/><rect x="705" y="236" width="50" height="14" rx="3"/>
+            <rect x="165" y="648" width="50" height="14" rx="3"/><rect x="705" y="648" width="50" height="14" rx="3"/>
+            <rect x="140" y="208" width="640" height="28" rx="5"/>
+          </g>
+          <path fill="url(#locCanopy)" stroke="#d3b778" stroke-width="2.5" d="M140 210Q190 118 460 98Q730 118 780 210z"/>
+          <path fill="none" stroke="#f0d48a" stroke-opacity=".4" stroke-width="2" d="M460 98Q330 130 270 208M460 98V208M460 98Q590 130 650 208"/>
+          <path stroke="#d3b778" stroke-width="6" d="M460 98V72"/>
+          <circle cx="460" cy="64" r="10" fill="#f0d48a"/>
+
+          <!-- marigold garlands -->
+          <g fill="none" stroke-linecap="round">
+            <use href="#locArcs" stroke="#f4a62a" stroke-width="14" stroke-dasharray="0 17"/>
+            <use href="#locArcs" stroke="#e8672a" stroke-width="7" stroke-dasharray="0 17" stroke-dashoffset="8"/>
+            <use href="#locPillarWrap" stroke="#f4a62a" stroke-width="13" stroke-dasharray="0 16"/>
+            <use href="#locPillarWrap" stroke="#e8672a" stroke-width="6" stroke-dasharray="0 16" stroke-dashoffset="8"/>
+            <use href="#locPillarWrap" transform="translate(540 0)" stroke="#f4a62a" stroke-width="13" stroke-dasharray="0 16"/>
+            <use href="#locPillarWrap" transform="translate(540 0)" stroke="#e8672a" stroke-width="6" stroke-dasharray="0 16" stroke-dashoffset="8"/>
+            <use href="#locBeamLights" stroke="#ffe08a" stroke-width="10" stroke-dasharray="0 22" filter="url(#locBlur)" opacity=".9"/>
+            <use href="#locBeamLights" stroke="#fff3c4" stroke-width="5" stroke-dasharray="0 22"/>
+          </g>
+
+          <!-- diyas and petals -->
+          <use href="#locDiya" x="120" y="742"/><use href="#locDiya" x="185" y="778"/><use href="#locDiya" x="255" y="810"/>
+          <use href="#locDiya" x="800" y="742"/><use href="#locDiya" x="735" y="778"/><use href="#locDiya" x="665" y="810"/>
+          <g opacity=".85">
+            <ellipse cx="320" cy="745" rx="7" ry="3.5" fill="#f4a62a"/><ellipse cx="610" cy="752" rx="7" ry="3.5" fill="#e0536e"/>
+            <ellipse cx="90" cy="800" rx="7" ry="3.5" fill="#e0536e"/><ellipse cx="840" cy="805" rx="7" ry="3.5" fill="#f4a62a"/>
+            <ellipse cx="350" cy="805" rx="6" ry="3" fill="#f4a62a"/><ellipse cx="575" cy="810" rx="6" ry="3" fill="#e0536e"/>
+            <ellipse cx="45" cy="745" rx="6" ry="3" fill="#f4a62a"/><ellipse cx="880" cy="750" rx="6" ry="3" fill="#e0536e"/>
+          </g>
+
+          <!-- gold card frame -->
+          <rect x="14" y="14" width="892" height="804" fill="none" stroke="#d3b778" stroke-opacity=".6" stroke-width="2"/>
+          <rect x="24" y="24" width="872" height="784" fill="none" stroke="#d3b778" stroke-opacity=".25"/>
+          <g fill="#d3b778">
+            <use href="#locDiamond" x="14" y="14"/><use href="#locDiamond" x="906" y="14"/>
+            <use href="#locDiamond" x="14" y="818"/><use href="#locDiamond" x="906" y="818"/>
+          </g>
         </svg>
       </figure>
 
@@ -393,10 +423,6 @@
       <span>♡</span><span>♡</span><span>♥</span><span>♡</span>
     </div>
     <div class="language-switch">
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 1.42 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -456,10 +482,6 @@
     </div>
 
     <div class="language-switch thank-language">
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" data-i18n-aria="themeToDark">
-        <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15.1Z"/></svg>
-        <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 1.42 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-      </button>
       <button class="language active" data-lang="en">EN</button>
       <button class="language" data-lang="mr">मराठी</button>
     </div>
@@ -469,6 +491,7 @@
       <div class="paper-corner corner-tr" aria-hidden="true"></div>
       <div class="paper-corner corner-bl" aria-hidden="true"></div>
       <div class="paper-corner corner-br" aria-hidden="true"></div>
+      <img class="kolam-decoration kolam-thank-you" src="images/kolam-card.png" alt="" aria-hidden="true">
 
       <div class="thank-content">
         <div class="thank-floral" aria-hidden="true">✿</div>
@@ -478,7 +501,8 @@
           For joining us on this special day.<br>
           Your presence is the best gift we could receive.
         </p>
-        <p class="thank-names">Aditya <span>&amp;</span> Vaishnavi</p>
+        <p class="thank-names">Aditya <span>&amp;</span>
+          Vaishnavi</p>
         <div class="thank-divider" aria-hidden="true"><span>✦</span><i></i><span>✦</span></div>
         <p class="thank-date">28 DECEMBER 2026</p>
         <p class="event-time" data-i18n="eventTime">Monday, 7:19 PM</p>

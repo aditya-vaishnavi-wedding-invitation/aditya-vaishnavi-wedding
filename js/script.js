@@ -11,6 +11,7 @@ const copy = {
   en: {
     groomName: "Aditya",
     brideName: "Vaishnavi",
+    ganeshBlessing: "॥ Shree Ganeshay Namah ॥",
     eyebrow: "YOU ARE CORDIALLY INVITED TO<br>CELEBRATE THE WEDDING OF",
     date: "28 DECEMBER 2026",
     eventTime: "Monday, 7:19 PM",
@@ -21,6 +22,7 @@ const copy = {
     countdownSeconds: "Secs",
     intro: "WE WOULD LIKE TO INVITE YOU TO<br>CELEBRATE WITH US ON THE MOST<br>SPECIAL DAY OF OUR LIVES.",
     rsvpButton: "RSVP ON WHATSAPP",
+    downloadWeddingCard: "DOWNLOAD INVITATION PDF",
     scroll: "SCROLL",
     welcomeKicker: "A CELEBRATION OF LOVE",
     welcomeTitle: "A day of joy.<br>Forever begins.",
@@ -30,8 +32,6 @@ const copy = {
     locationName: "Shivtirth Mangal Karyalaya Va Lawns Tirthpuri",
     locationCity: "Tirthpuri, Maharashtra",
     directions: "Locate on map",
-    themeToDark: "Switch to dark mode",
-    themeToLight: "Switch to light mode",
     transportButton: "NEARBY TRANSPORT",
     transportKicker: "PLAN YOUR JOURNEY",
     transportTitle: "Nearby Transport",
@@ -67,6 +67,7 @@ const copy = {
   mr: {
     groomName: "आदित्य",
     brideName: "वैष्णवी",
+    ganeshBlessing: "॥ श्री गणेशाय नमः ॥",
     eyebrow: "आपणास आमच्या विवाह सोहळ्यास<br>मनःपूर्वक आमंत्रण",
     date: "२८ डिसेंबर २०२६",
     eventTime: "सोमवार, सायंकाळी ७:१९",
@@ -77,6 +78,7 @@ const copy = {
     countdownSeconds: "सेकंद",
     intro: "आमच्या आयुष्यातील या खास दिवशी<br>आपण आमच्यासोबत यावे,<br>हीच मनापासून इच्छा.",
     rsvpButton: "व्हॉट्सॲपवर उपस्थिती कळवा",
+    downloadWeddingCard: "लग्नपत्रिका PDF डाउनलोड करा",
     scroll: "पुढे",
     welcomeTitle: "तुमच्यासोबत हा आनंदाचा दिवस<br>साजरा करताना आम्हाला खूप आनंद होईल.",
     welcomeCopy: "आपली उपस्थिती आमच्यासाठी खूप खास आहे.<br>आपले स्वागत करण्यासाठी आम्ही उत्सुक आहोत.",
@@ -88,8 +90,6 @@ const copy = {
     locationName: "शिवतीर्थ मंगल कार्यालय वा लॉन तीर्थपुरी",
     locationCity: "तीर्थपुरी, महाराष्ट्र",
     directions: "नकाशावर ठिकाण पहा",
-    themeToDark: "डार्क मोड सुरू करा",
-    themeToLight: "लाईट मोड सुरू करा",
     transportButton: "जवळची वाहतूक",
     transportKicker: "तुमचा प्रवास नियोजित करा",
     transportTitle: "जवळचे वाहतूक पर्याय",
@@ -124,31 +124,6 @@ const copy = {
   }
 };
 
-let currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-
-function updateThemeToggleLabels() {
-  const lang = document.documentElement.lang === "mr" ? "mr" : "en";
-  const labelKey = currentTheme === "dark" ? "themeToLight" : "themeToDark";
-
-  document.querySelectorAll(".theme-toggle").forEach(button => {
-    button.dataset.i18nAria = labelKey;
-    button.setAttribute("aria-label", copy[lang][labelKey]);
-  });
-}
-
-function setTheme(theme, persist = false) {
-  currentTheme = theme;
-  document.documentElement.dataset.theme = theme;
-  document.querySelector('meta[name="theme-color"]').content =
-    theme === "dark" ? "#211c1c" : "#64130f";
-
-  if (persist) {
-    localStorage.setItem("wedding-invitation-theme", theme);
-  }
-
-  updateThemeToggleLabels();
-}
-
 function setLanguage(lang) {
   document.documentElement.lang = lang === "mr" ? "mr" : "en";
 
@@ -166,8 +141,6 @@ function setLanguage(lang) {
     element.setAttribute("aria-label", copy[lang][element.dataset.i18nAria]);
   });
 
-  updateThemeToggleLabels();
-
   const currentPhoto = document.getElementById("preWeddingPhoto");
   if (currentPhoto) {
     currentPhoto.alt = `${copy[lang].galleryPhotoAlt} ${preWeddingPhotoNumbers[photoIndex]}`;
@@ -178,21 +151,7 @@ document.querySelectorAll(".language").forEach(button => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
-document.querySelectorAll(".theme-toggle").forEach(button => {
-  button.addEventListener("click", () => {
-    setTheme(currentTheme === "dark" ? "light" : "dark", true);
-  });
-});
-
 setLanguage("en");
-setTheme(currentTheme);
-
-const themePreference = window.matchMedia("(prefers-color-scheme: dark)");
-if (!localStorage.getItem("wedding-invitation-theme")) {
-  themePreference.addEventListener("change", event => {
-    setTheme(event.matches ? "dark" : "light");
-  });
-}
 
 const weddingCountdown = document.getElementById("weddingCountdown");
 if (weddingCountdown) {

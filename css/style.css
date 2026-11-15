@@ -1,6 +1,6 @@
 /* =========================================================
    ADITYA & VAISHNAVI
-   Shared design system: burgundy + antique gold + ivory
+   Shared design system: indigo + antique gold + lavender
    Mobile first
    ========================================================= */
 
@@ -16,18 +16,19 @@
 }
 
 :root {
-  --burgundy-950: #350704;
-  --burgundy-900: #470906;
-  --burgundy-800: #64130f;
-  --burgundy-700: #7e1b15;
-  --burgundy-500: #a03327;
-  --gold-700: #9d6f22;
-  --gold-600: #bb8a31;
-  --gold-400: #e2c27a;
-  --gold-200: #f2dfae;
-  --ivory: #fbf7ef;
-  --ivory-2: #f3eadc;
-  --ink: #5a2119;
+  --burgundy-950: #171d49;
+  --burgundy-900: #222b5f;
+  --burgundy-800: #303e7b;
+  --burgundy-700: #455593;
+  --burgundy-500: #6879ad;
+  --gold-700: #8d6739;
+  --gold-600: #ad8350;
+  --gold-400: #d3b778;
+  --gold-200: #eadfbd;
+  --ivory: #f7f7fc;
+  --ivory-2: #eceef8;
+  --ink: #30385f;
+  --ink-muted: #59617e;
   --olive-none: transparent;
 
   --serif: "Cormorant Garamond", "Times New Roman", serif;
@@ -47,8 +48,8 @@ body {
   min-width: 0;
   background:
     radial-gradient(ellipse at 50% 0, rgba(255,255,255,.82), transparent 55%),
-    repeating-linear-gradient(135deg, rgba(118,75,38,.025) 0 1px, transparent 1px 5px),
-    #e8d8c0;
+    repeating-linear-gradient(135deg, rgba(54,65,112,.025) 0 1px, transparent 1px 5px),
+    #e3e6f2;
   color: var(--ink);
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
@@ -296,8 +297,6 @@ button { font: inherit; }
 .page-names {
   display: grid;
   place-items: center;
-  --floral-corner-width: clamp(88px, 24vw, 128px);
-  --floral-band-height: clamp(108px, 14vw, 150px);
 }
 
 .page-names::after {
@@ -319,72 +318,6 @@ button { font: inherit; }
   box-shadow: inset 0 0 0 5px rgba(180, 139, 80, .12);
 }
 
-.names-floral-corner {
-  position: absolute;
-  z-index: 3;
-  right: 0;
-  bottom: 0;
-  width: var(--floral-corner-width);
-  aspect-ratio: .52;
-  object-fit: cover;
-  object-position: center bottom;
-  opacity: .9;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 28px);
-  mask-image: linear-gradient(to bottom, transparent, #000 28px);
-}
-
-.names-floral-corner-left {
-  right: auto;
-  left: 0;
-  transform: scaleX(-1);
-}
-
-.names-floral-corner-top {
-  top: 0;
-  bottom: auto;
-  transform: scaleY(-1);
-}
-
-.names-floral-corner-left.names-floral-corner-top {
-  transform: scale(-1, -1);
-}
-
-.names-floral-band {
-  position: absolute;
-  z-index: 3;
-  container-type: inline-size;
-  left: var(--floral-corner-width);
-  right: var(--floral-corner-width);
-  bottom: 0;
-  height: var(--floral-band-height);
-  overflow: hidden;
-  opacity: .9;
-  pointer-events: none;
-}
-
-.names-floral-band img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--floral-band-height);
-  height: 100cqw;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-  transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center;
-}
-
-.names-floral-band-top {
-  top: 0;
-  bottom: auto;
-}
-
-.names-floral-band-top img {
-  transform: translate(-50%, -50%) rotate(-90deg);
-}
-
 .names-content {
   position: relative;
   z-index: 5;
@@ -393,6 +326,45 @@ button { font: inherit; }
   text-align: center;
   padding: 75px 0 45px;
   overflow-wrap: break-word;
+  
+}
+
+.ganesh-invocation {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.ganesh-title {
+  margin: 0;
+  padding: 4px 14px;
+  border: 1px solid var(--card-rule);
+  border-radius: 999px;
+  background: rgba(247,247,252,.88);
+  box-shadow: 0 2px 8px rgba(37,45,91,.1);
+  color: var(--burgundy-800);
+  font: 600 clamp(12px, 3vw, 15px)/1.4 var(--body);
+  letter-spacing: .04em;
+}
+
+.ganesh-motifs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 2vw, 14px);
+}
+
+.ganesh-symbol {
+  display: block;
+  width: clamp(48px, 13vw, 62px);
+  height: auto;
+}
+
+.ganesh-lotus {
+  display: block;
+  width: clamp(40px, 11vw, 54px);
+  height: auto;
 }
 
 .floral-line {
@@ -459,7 +431,7 @@ button { font: inherit; }
 
 .event-time {
   margin: 9px 0 0;
-  color: #765148;
+  color: var(--ink-muted);
   font: 700 15px/1.5 var(--body);
   letter-spacing: .04em;
 }
@@ -476,7 +448,7 @@ button { font: inherit; }
   gap: clamp(6px, 2vw, 16px);
   width: min(100%, 520px);
   margin: 18px auto 0;
-  color: #7e3328;
+  color: var(--burgundy-700);
   font-variant-numeric: tabular-nums;
 }
 
@@ -520,7 +492,7 @@ button { font: inherit; }
 }
 
 .countdown-label {
-  color: #4b1b16;
+  color: var(--ink);
   font: 600 11px/1.2 Arial, Helvetica, sans-serif;
   text-shadow: 0 1px 2px rgba(255,255,255,.7);
 }
@@ -561,6 +533,37 @@ button { font: inherit; }
   outline-offset: 3px;
 }
 
+.download-card-button {
+  display: flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto 0;
+  padding: 10px 12px;
+  border: 1px solid var(--burgundy-700);
+  border-radius: 2px;
+  background: rgba(247,247,252,.9);
+  color: var(--burgundy-800);
+  font: 600 11px/1.4 var(--body);
+  letter-spacing: .04em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.download-card-button:hover {
+  background: var(--burgundy-800);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.download-card-button:focus-visible {
+  outline: 3px solid var(--gold-600);
+  outline-offset: 3px;
+}
+
 .scroll-cue {
   margin-top: clamp(1.5rem, 5vh, 3.625rem);
   color: var(--ink);
@@ -575,7 +578,7 @@ button { font: inherit; }
 }
 
 /* =========================================================
-   STEP 3 — BURGUNDY + IVORY, NO GREEN
+   STEP 3 — INDIGO + LAVENDER
    ========================================================= */
 
 .page-welcome {
@@ -583,9 +586,32 @@ button { font: inherit; }
   place-items: center;
   padding: 78px 20px 55px;
   background:
-    radial-gradient(circle at 50% 12%, rgba(226,194,122,.17), transparent 25%),
+    radial-gradient(circle at 50% 12%, rgba(211,183,120,.2), transparent 25%),
     linear-gradient(180deg, var(--burgundy-800), var(--burgundy-900));
   color: var(--ivory);
+}
+
+.kolam-decoration {
+  position: absolute;
+  display: block;
+  width: clamp(90px, 24vw, 150px);
+  height: auto;
+  opacity: .48;
+  pointer-events: none;
+}
+
+.kolam-welcome {
+  z-index: 1;
+  right: 0;
+  bottom: 5%;
+}
+
+.kolam-thank-you {
+  z-index: 0;
+  left: -1%;
+  bottom: 3%;
+  opacity: .24;
+  transform: scaleX(-1);
 }
 
 .language-dark .language {
@@ -632,7 +658,7 @@ button { font: inherit; }
   font-family: var(--body);
   font-size: clamp(15px, 4vw, 18px);
   line-height: 1.65;
-  color: rgba(255,248,238,.94);
+  color: rgba(247,247,252,.94);
   text-wrap: balance;
 }
 
@@ -675,8 +701,8 @@ button { font: inherit; }
 
 .page-location {
   background:
-    radial-gradient(circle at 50% 18%, rgba(226,194,122,.22), transparent 24%),
-    linear-gradient(180deg, var(--ivory), #eee2d1);
+    radial-gradient(circle at 50% 18%, rgba(211,183,120,.22), transparent 24%),
+    linear-gradient(180deg, var(--ivory), #e8eaf5);
   padding: 82px 18px 65px;
   display: flex;
   align-items: flex-start;
@@ -1487,6 +1513,8 @@ button:focus-visible {
 }
 
 .thank-content {
+  position: relative;
+  z-index: 1;
   width: min(100%, 410px);
   min-width: 0;
   text-align: center;
@@ -1757,10 +1785,10 @@ button:focus-visible {
 
 /* A shared stationery palette ties every part of the invitation together. */
 :root {
-  --card-paper: #fbf7ef;
-  --card-paper-shadow: #f0e5d5;
-  --card-rule: rgba(157,111,34,.34);
-  --card-shadow: 0 18px 48px rgba(67,35,19,.14);
+  --card-paper: #f7f7fc;
+  --card-paper-shadow: #e9ebf6;
+  --card-rule: rgba(141,103,57,.34);
+  --card-shadow: 0 18px 48px rgba(37,45,91,.14);
 }
 
 .language {
@@ -1847,15 +1875,15 @@ button:focus-visible {
 .page-names {
   background-color: var(--card-paper);
   background-image:
-    linear-gradient(rgba(251,247,239,.3), rgba(251,247,239,.38)),
-    url("../images/names-background.png");
+    linear-gradient(rgba(247,247,252,.58), rgba(247,247,252,.64)),
+    url("../images/card-hands-background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .language-switch {
-  background: rgba(255,253,248,.96);
+  background: rgba(247,247,252,.96);
   border-color: var(--card-rule);
   box-shadow: 0 5px 16px rgba(55,10,5,.1);
 }
@@ -1909,7 +1937,7 @@ button:focus-visible {
   width: 100%;
   max-width: 34ch;
   margin: 19px auto 24px;
-  color: #765148;
+  color: var(--ink-muted);
   font-size: clamp(15px, 2.2vw, 17px);
 }
 
@@ -2192,8 +2220,30 @@ button:focus-visible {
 }
 
 @media (max-width: 430px) {
+  .page-names {
+    padding-top: 44px;
+    background-position: center, 54% center;
+  }
+
   .page-names .names-content {
-    padding-top: 66px;
+    padding-top: 32px;
+    padding-bottom: 0;
+  }
+
+  .page-names .ganesh-invocation {
+    margin-bottom: 8px;
+  }
+
+  .page-names .ganesh-symbol {
+    width: 44px;
+  }
+
+  .page-names .ganesh-lotus {
+    width: 36px;
+  }
+
+  .page-names .floral-line {
+    margin-bottom: 10px;
   }
 
   .page-names .eyebrow {
@@ -2205,16 +2255,20 @@ button:focus-visible {
     font-size: clamp(2.7rem, 15vw, 3.2rem);
   }
 
+  .page-names .couple-names {
+    margin-top: 10px;
+  }
+
   .page-names .couple-names small {
     margin: 6px 0;
   }
 
   .page-names .wedding-date {
-    margin-top: 16px;
+    margin-top: 10px;
   }
 
   .page-names .countdown {
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   .page-names .intro {
@@ -2224,7 +2278,13 @@ button:focus-visible {
   }
 
   .page-names .rsvp-button {
-    margin-top: 16px;
+    margin-top: 10px;
+  }
+
+  .page-names .download-card-button {
+    min-height: 38px;
+    margin-top: 3px;
+    padding: 5px 12px;
   }
 }
 
@@ -2257,7 +2317,7 @@ button:focus-visible {
 .gallery-copy {
   margin: 0 auto 22px;
   max-width: 38ch;
-  color: #765148;
+  color: var(--ink-muted);
   font: 400 16px/1.65 var(--body);
 }
 
@@ -2420,65 +2480,23 @@ button:focus-visible {
   min-height: 38px;
 }
 
-.theme-toggle {
-  display: grid;
-  flex: 0 0 38px;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  place-items: center;
-  border: 1px solid var(--card-rule);
-  border-radius: 50%;
-  background: var(--card-paper);
-  color: var(--ink);
-  cursor: pointer;
-  transition: background-color .2s ease, color .2s ease, transform .2s ease;
-}
-
-.theme-toggle:hover {
-  transform: rotate(12deg);
-}
-
-.theme-icon {
-  display: block;
-  width: 19px;
-  height: 19px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.7;
-}
-
-.icon-sun,
-[data-theme="dark"] .icon-moon {
-  display: none;
-}
-
-[data-theme="dark"] .icon-sun {
-  display: block;
-}
-
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --ivory: #211c1c;
-  --ivory-2: #2b2424;
-  --ink: #f3e8da;
-  --card-paper: #241e1e;
-  --card-paper-shadow: #312727;
-  --card-rule: rgba(226,194,122,.3);
-  --gold-200: #e2c27a;
-}
-
-:root[data-theme="light"] {
-  color-scheme: light;
+  --ivory: #1b2038;
+  --ivory-2: #252b48;
+  --ink: #eceefd;
+  --ink-muted: #d0d5ed;
+  --card-paper: #202641;
+  --card-paper-shadow: #2a3151;
+  --card-rule: rgba(211,183,120,.32);
+  --gold-200: #e2cf9d;
 }
 
 :root[data-theme="dark"] body {
   background:
-    radial-gradient(ellipse at 50% 0, rgba(112,67,55,.2), transparent 55%),
-    repeating-linear-gradient(135deg, rgba(226,194,122,.018) 0 1px, transparent 1px 5px),
-    #171414;
+    radial-gradient(ellipse at 50% 0, rgba(84,101,161,.2), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(211,183,120,.018) 0 1px, transparent 1px 5px),
+    #111629;
   color: var(--ink);
 }
 
@@ -2501,10 +2519,10 @@ button:focus-visible {
 }
 
 :root[data-theme="dark"] .page-names {
-  background-color: #211c1c;
+  background-color: #1b2038;
   background-image:
-    linear-gradient(rgba(20,15,16,.56), rgba(20,15,16,.62)),
-    url("../images/names-background.png");
+    linear-gradient(rgba(17,22,41,.68), rgba(17,22,41,.74)),
+    url("../images/card-hands-background.jpg");
 }
 
 :root[data-theme="dark"] .page-names .eyebrow,
@@ -2519,8 +2537,15 @@ button:focus-visible {
   color: #edcc83;
 }
 
+:root[data-theme="dark"] .page-names .ganesh-title {
+  border-color: rgba(211,183,120,.35);
+  background: rgba(32,38,65,.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  color: #e2cf9d;
+}
+
 :root[data-theme="dark"] .page-names .countdown {
-  color: #f3d0c4;
+  color: #d0d5ed;
 }
 
 :root[data-theme="dark"] .page-names .countdown-unit {
@@ -2541,57 +2566,57 @@ button:focus-visible {
 
 :root[data-theme="dark"] .page-welcome {
   background:
-    radial-gradient(ellipse at 50% 48%, rgba(147,50,39,.2), transparent 47%),
-    linear-gradient(145deg, #281314, #180d0e);
-  color: #f3e8da;
+    radial-gradient(ellipse at 50% 48%, rgba(104,121,173,.2), transparent 47%),
+    linear-gradient(145deg, #252d50, #151a30);
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .page-welcome::after {
-  color: #e2c27a;
+  color: #e2cf9d;
 }
 
 :root[data-theme="dark"] .welcome-kicker,
 :root[data-theme="dark"] .welcome-title {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .welcome-copy {
-  color: #e2d2c5;
+  color: #d0d5ed;
 }
 
 :root[data-theme="dark"] .page-location {
   background:
-    radial-gradient(ellipse at 50% 0, #302626, transparent 70%),
-    linear-gradient(180deg, #211c1c, #191515);
+    radial-gradient(ellipse at 50% 0, #30395e, transparent 70%),
+    linear-gradient(180deg, #1b2038, #151a30);
 }
 
 :root[data-theme="dark"] .section-kicker {
-  color: #e2c27a;
+  color: #e2cf9d;
 }
 
 :root[data-theme="dark"] .section-title,
 :root[data-theme="dark"] .location-card h3 {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .location-card {
-  background: rgba(42,34,33,.98);
-  border-color: rgba(226,194,122,.28);
+  background: rgba(37,43,72,.98);
+  border-color: rgba(211,183,120,.28);
 }
 
 :root[data-theme="dark"] .location-card p,
 :root[data-theme="dark"] .gallery-copy {
-  color: #d3c2b5;
+  color: #d0d5ed;
 }
 
 :root[data-theme="dark"] .transport-button {
-  background: #302727;
-  color: #f3e8da;
+  background: #303858;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .transport-button:hover,
 :root[data-theme="dark"] .carousel-arrow:hover {
-  background: #403333;
+  background: #3b4569;
 }
 
 :root[data-theme="dark"] .map-button {
@@ -2600,51 +2625,51 @@ button:focus-visible {
 }
 
 :root[data-theme="dark"] .transport-dialog {
-  background: #241e1e;
-  color: #f3e8da;
+  background: #202641;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .transport-note,
 :root[data-theme="dark"] .transport-group li span {
-  color: #d3c2b5;
+  color: #d0d5ed;
 }
 
 :root[data-theme="dark"] .transport-group li {
-  background: #302727;
+  background: #303858;
 }
 
 :root[data-theme="dark"] .transport-group li strong,
 :root[data-theme="dark"] .transport-dialog-header h2 {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .transport-close,
 :root[data-theme="dark"] .transport-icon {
-  background: #302727;
-  color: #edcc83;
+  background: #303858;
+  color: #e2cf9d;
 }
 
 :root[data-theme="dark"] .transport-kicker,
 :root[data-theme="dark"] .transport-group h3 {
-  color: #edcc83;
+  color: #e2cf9d;
 }
 
 :root[data-theme="dark"] .page-gallery {
   background:
-    radial-gradient(ellipse at 50% 30%, #302626 0, #241e1e 54%, #191515 100%);
+    radial-gradient(ellipse at 50% 30%, #30395e 0, #202641 54%, #151a30 100%);
 }
 
 :root[data-theme="dark"] .carousel-frame {
-  background: linear-gradient(145deg, #47372a, #9d6f22, #47372a);
+  background: linear-gradient(145deg, #303858, #ad8350, #303858);
 }
 
 :root[data-theme="dark"] .carousel-arrow {
-  background: #302727;
-  color: #f3e8da;
+  background: #303858;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .carousel-count {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .carousel-progress,
@@ -2654,56 +2679,50 @@ button:focus-visible {
 
 :root[data-theme="dark"] .page-thank-you {
   background:
-    radial-gradient(ellipse at 50% 10%, #332525, transparent 72%),
-    linear-gradient(145deg, #171313, #211718);
-  color: #f3e8da;
+    radial-gradient(ellipse at 50% 10%, #30395e, transparent 72%),
+    linear-gradient(145deg, #111629, #202641);
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .thank-paper {
   background:
     radial-gradient(circle at 20% 15%, rgba(255,255,255,.035), transparent 28%),
-    linear-gradient(135deg, #302727, #241e1e);
-  border-color: rgba(226,194,122,.34);
+    linear-gradient(135deg, #303858, #202641);
+  border-color: rgba(211,183,120,.34);
 }
 
 :root[data-theme="dark"] .thank-paper::before {
-  border-color: rgba(226,194,122,.2);
+  border-color: rgba(211,183,120,.2);
 }
 
 :root[data-theme="dark"] .thank-kicker,
 :root[data-theme="dark"] .thank-date {
-  color: #e2c27a;
+  color: #e2cf9d;
 }
 
 :root[data-theme="dark"] .thank-title,
 :root[data-theme="dark"] .thank-names,
 :root[data-theme="dark"] .thank-copy,
 :root[data-theme="dark"] .page-thank-you .event-time {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .paper-corner {
-  border-color: rgba(226,194,122,.32);
+  border-color: rgba(211,183,120,.32);
 }
 
 :root[data-theme="dark"] .language-switch {
-  background: rgba(36,30,30,.97);
+  background: rgba(32,38,65,.97);
 }
 
 :root[data-theme="dark"] .language {
-  color: #f3e8da;
+  color: #eceefd;
 }
 
 :root[data-theme="dark"] .language.active,
 :root[data-theme="dark"] .language-dark .language.active {
-  background: #7e1b15;
+  background: #303e7b;
   color: #fffaf0;
-}
-
-:root[data-theme="dark"] .theme-toggle {
-  border-color: rgba(226,194,122,.32);
-  background: #302727;
-  color: #f3e8da;
 }
 
 @media (max-width: 600px) {
@@ -2756,4 +2775,115 @@ button:focus-visible {
   .page-welcome .couple-art-frame {
     width: min(100%, 350px);
   }
+}
+
+
+/* =========================================================
+   FIRST PAGE — designations, larger date/time, slightly smaller names
+   ========================================================= */
+
+.page-names .couple-names span {
+  font-size: clamp(3.6rem, 14vw, 5.6rem);
+}
+
+.page-names .couple-names .designation {
+  display: block;
+  margin: 6px 0 0;
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  opacity: .88;
+}
+
+.page-names .couple-names small {
+  margin: 10px 0;
+}
+
+.page-names .wedding-date {
+  margin-top: 22px;
+  font-size: clamp(24px, 4vw, 30px);
+  line-height: 1.25;
+  letter-spacing: .1em;
+}
+
+.page-names .event-time {
+  margin-top: 8px;
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+:lang(mr) .page-names .event-time {
+  letter-spacing: .02em;
+}
+
+@media (max-width: 600px) {
+  .page-names .wedding-date {
+    font-size: clamp(21px, 6vw, 25px);
+    letter-spacing: .06em;
+  }
+
+  .page-names .event-time {
+    font-size: clamp(17px, 4.8vw, 20px);
+  }
+}
+
+@media (max-width: 430px) {
+  .page-names .couple-names span {
+    font-size: clamp(2.3rem, 12.5vw, 2.8rem);
+  }
+
+  .page-names .couple-names .designation {
+    margin-top: 3px;
+    font-size: 13px;
+    letter-spacing: .04em;
+  }
+
+  .page-names .couple-names small {
+    margin: 5px 0;
+  }
+
+  .page-names .wedding-date {
+    margin-top: 14px;
+    font-size: clamp(21px, 6vw, 24px);
+    letter-spacing: .05em;
+  }
+
+  .page-names .event-time {
+    margin-top: 5px;
+    font-size: clamp(17px, 4.8vw, 19px);
+  }
+}
+
+/* =========================================================
+   FIRST PAGE — remove extra gap between language toggle and floral line
+   (content now starts from the top instead of being centered vertically)
+   ========================================================= */
+
+.page-names {
+  align-content: start;
+  padding-top: 96px;
+}
+
+.page-names .names-content {
+  padding-top: 0;
+}
+
+@media (max-width: 600px) {
+  .page-names {
+    padding-top: 86px;
+  }
+}
+
+/* =========================================================
+   LOCATION PAGE — frame for the redrawn night-time mandap illustration
+   ========================================================= */
+
+.page-location .location-illustration {
+  border: 1px solid rgba(211, 183, 120, .55);
+  background: #141a33;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
 }

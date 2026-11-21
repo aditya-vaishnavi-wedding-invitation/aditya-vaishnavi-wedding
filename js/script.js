@@ -280,3 +280,178 @@ const pageObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll(".page").forEach(page => pageObserver.observe(page));
+
+/* =========================================================
+   ✦ WOW LAYER — gate, petals, reveals, tilt, sparkles
+   ========================================================= */
+(() => {
+  const root = document.documentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  root.classList.add("js");
+
+  /* ---- Petal canvas (ambient fall + bursts) ---- */
+  const cv = document.getElementById("petals");
+  const ctx = cv && !reduce ? cv.getContext("2d") : null;
+  const colors = ["#f4a62a", "#e8672a", "#e0536e", "#f6dc94", "#fff4e0", "#d96b8a"];
+  const phone = matchMedia("(max-width: 600px), (pointer: coarse)").matches;
+  const maxPetals = phone ? 12 : 22, maxDpr = phone ? 1.5 : 2;
+  let W = 0, H = 0, dpr = 1, ambient = false;
+  const petals = [];
+
+  function resize() {
+    dpr = Math.min(devicePixelRatio || 1, maxDpr);
+    W = cv.width = innerWidth * dpr;
+    H = cv.height = innerHeight * dpr;
+  }
+
+  function addPetal(x, y, burst) {
+    const a = Math.random() * Math.PI + Math.PI;           // upward fan
+    const s = burst ? (4 + Math.random() * 11) * dpr : 0;
+    petals.push({
+      x, y, vx: burst ? Math.cos(a) * s : (Math.random() - .5) * dpr, vy: burst ? Math.sin(a) * s : (.7 + Math.random()) * dpr,
+      r: (5 + Math.random() * 7) * dpr, rot: Math.random() * 6.28, vr: (Math.random() - .5) * .08,
+      ph: Math.random() * 6.28, flip: Math.random() * 6.28, c: colors[(Math.random() * colors.length) | 0],
+      drag: burst ? .965 : 1, term: (1.1 + Math.random() * .9) * dpr
+    });
+  }
+
+  function burst(x, y, n) {
+    if (!ctx) return;
+    for (let i = 0; i < n; i++) addPetal(x * dpr, y * dpr, true);
+  }
+
+  function frame() {
+    requestAnimationFrame(frame);
+    if (document.hidden) return;
+    if (!petals.length && !ambient) return;
+    ctx.clearRect(0, 0, W, H);
+    if (ambient && petals.length < maxPetals && Math.random() < .05) addPetal(Math.random() * W, -20 * dpr, false);
+    for (let i = petals.length - 1; i--;) {
+      const p = petals[i];
+      p.vx *= p.drag; p.vy = Math.min(p.vy + .12 * dpr, p.term);
+      p.ph += .02; p.flip += .05; p.rot += p.vr;
+      p.x += p.vx + Math.sin(p.ph) * .8 * dpr; p.y += p.vy;
+      if (p.y > H + 30 || p.x < -60 || p.x > W + 60) { petals.splice(i, 1); continue; }
+      ctx.save();
+      ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.scale(1, .45 + .55 * Math.abs(Math.cos(p.flip)));
+      ctx.fillStyle = p.c; ctx.globalAlpha = .85;
+      ctx.beginPath(); ctx.ellipse(0, 0, p.r, p.r * .55, 0, 0, 6.283); ctx.fill();
+      ctx.restore();
+    }
+  }
+  if (ctx) { resize(); addEventListener("resize", resize); frame(); }
+
+  /* ---- Opening gate ---- */
+  const gate = document.getElementById("gate");
+  const openBtn = document.getElementById("openGate");
+  if (gate && !reduce) {
+    openBtn.focus({ preventScroll: true });
+    openBtn.addEventListener("click", () => {
+      if (gate.classList.contains("open")) return;
+      gate.classList.add("open");
+      burst(innerWidth / 2, innerHeight / 2, phone ? 80 : 150);
+      root.classList.remove("intro-lock");
+      setTimeout(() => { gate.classList.add("done"); ambient = true; }, 1700);
+    });
+  } else {
+    if (gate) gate.remove();
+    root.classList.remove("intro-lock");
+  }
+
+  /* ---- Scroll reveals ---- */
+  const groups = [
+    [".page-welcome", [[".welcome-kicker", "rv"], [".welcome-title", "rv-wipe"], [".welcome-copy", "rv"], [".couple-art-frame", "rv-photo"]]],
+    [".page-location", [[".section-floral", "rv"], [".section-kicker", "rv"], [".section-title", "rv-wipe"], [".location-illustration", "rv-iris"], [".location-card", "rv"]]],
+    [".page-thank-you", [[".thank-paper", "rv-unfold"], [".thank-floral", "rv"], [".thank-kicker", "rv"], [".thank-title", "rv-wipe"], [".thank-copy", "rv"], [".thank-names", "rv"], [".thank-divider", "rv"], [".thank-date", "rv"], [".thank-content .event-time", "rv"]]]
+  ];
+  const onSee = entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add("in");
+    io.unobserve(el); ioClip.unobserve(el);
+    if (el.classList.contains("rv-unfold")) {
+      const b = el.getBoundingClientRect();
+      burst(b.left + b.width / 2, Math.max(b.top, 80), phone ? 50 : 90);
+    }
+    setTimeout(() => el.classList.remove("rv", "rv-wipe", "rv-iris", "rv-unfold", "rv-photo", "in"), 4200);
+  });
+  const io = new IntersectionObserver(onSee, { threshold: .22, rootMargin: "0px 0px -6% 0px" });
+  /* clipped elements are mostly invisible, so they need a zero threshold */
+  const ioClip = new IntersectionObserver(onSee, { threshold: 0, rootMargin: "0px 0px -10% 0px" });
+
+  groups.forEach(([page, items]) => {
+    items.forEach(([sel, cls], i) => {
+      const el = document.querySelector(`${page} ${sel}`);
+      if (!el) return;
+      el.classList.add(cls);
+      el.style.setProperty("--d", cls === "rv-unfold" ? 0 : Math.min(i, 4));
+      (cls === "rv-wipe" || cls === "rv-iris" ? ioClip : io).observe(el);
+    });
+  });
+
+  /* ---- Countdown: flip digits on change ---- */
+  ["countdownDays", "countdownHours", "countdownMinutes", "countdownSeconds"].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    new MutationObserver(() => {
+      el.classList.remove("tick"); void el.offsetWidth; el.classList.add("tick");
+    }).observe(el, { childList: true });
+  });
+
+  if (reduce) return;
+
+  /* ---- Scroll progress + heart parallax ---- */
+  const bar = document.getElementById("scrollProgress");
+  const hearts = [...document.querySelectorAll(".page-heart-pattern")];
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      bar.style.setProperty("--p", max > 0 ? (scrollY / max).toFixed(4) : 0);
+      hearts.forEach(h => {
+        const r = h.parentElement.getBoundingClientRect();
+        h.style.setProperty("--py", `${((r.top + r.height / 2 - innerHeight / 2) * -.08).toFixed(1)}px`);
+      });
+      ticking = false;
+    });
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Portrait tilt ---- */
+  const portrait = document.querySelector(".couple-art-frame");
+  if (portrait) {
+    portrait.addEventListener("pointermove", e => {
+      if (e.pointerType !== "mouse") return;
+      const b = portrait.getBoundingClientRect();
+      const x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      portrait.style.transform = `perspective(900px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+    });
+    ["pointerleave", "pointercancel"].forEach(t => portrait.addEventListener(t, () => { portrait.style.transform = ""; }));
+  }
+
+  /* ---- Sparkles: mouse trail + tap bursts ---- */
+  const glyphs = ["✦", "✧", "♡", "❈"];
+  function spark(x, y, spread) {
+    const s = document.createElement("span");
+    s.className = "spark";
+    s.textContent = glyphs[(Math.random() * glyphs.length) | 0];
+    s.style.left = x + "px"; s.style.top = y + "px";
+    s.style.setProperty("--dx", (Math.random() - .5) * spread + "px");
+    s.style.setProperty("--dy", (Math.random() * spread * .8 + 10) + "px");
+    s.style.fontSize = 10 + Math.random() * 10 + "px";
+    s.addEventListener("animationend", () => s.remove());
+    document.body.appendChild(s);
+  }
+  let last = 0;
+  addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse" || root.classList.contains("intro-lock")) return;
+    const now = performance.now();
+    if (now - last > 55) { last = now; spark(e.clientX, e.clientY, 50); }
+  });
+  addEventListener("pointerdown", e => {
+    for (let i = 0; i < 7; i++) spark(e.clientX, e.clientY, 120);
+  });
+})();

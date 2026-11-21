@@ -10,10 +10,23 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://adityavaishnavi.runs-at.dev/">
   <title>Aditya ❤️ Vaishnavi | Wedding Invitation</title>
-  <script>document.documentElement.dataset.theme = "dark";</script>
+  <script>document.documentElement.dataset.theme = "dark";
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro-lock");</script>
+  <noscript><style>.gate{display:none}html.intro-lock,html.intro-lock body{overflow:auto;height:auto}</style></noscript>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Opening gate: seal + doors that swing open -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Wedding invitation">
+  <div class="gate-center">
+    <div class="seal" aria-hidden="true"><span>A</span><i>&amp;</i><span>V</span></div>
+    <p class="gate-names">Aditya &amp; Vaishnavi</p>
+    <p class="gate-sub">॥ श्री गणेशाय नमः ॥</p>
+    <button class="gate-btn" id="openGate" type="button">Open the invitation<small>आमंत्रण उघडा</small></button>
+  </div>
+</div>
+<canvas id="petals" aria-hidden="true"></canvas>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <main class="invitation">
 
   <!-- =========================================================
@@ -256,7 +269,6 @@
             <circle cx="610" cy="110" r="2.5"/><circle cx="690" cy="52" r="2"/><circle cx="850" cy="170" r="2.5"/>
             <circle cx="60" cy="230" r="2"/><circle cx="870" cy="300" r="2"/><circle cx="95" cy="340" r="2.5"/>
           </g>
-          <path fill="#f3e8da" d="M800 66a38 38 0 1 0 38 54a30 30 0 1 1-38-54z"/>
 
           <!-- distant hills with fairy lights, lawn -->
           <path fill="#151c3a" d="M0 540Q120 470 260 525T520 520T780 510T920 498V620H0z"/>

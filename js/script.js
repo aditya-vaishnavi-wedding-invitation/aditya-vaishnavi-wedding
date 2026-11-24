@@ -344,9 +344,9 @@ document.querySelectorAll(".page").forEach(page => pageObserver.observe(page));
   /* ---- Opening gate ---- */
   const gate = document.getElementById("gate");
   const openBtn = document.getElementById("openGate");
-  if (gate && !reduce) {
+  if (gate) {
     openBtn.focus({ preventScroll: true });
-    openBtn.addEventListener("click", () => {
+    gate.addEventListener("click", () => {  /* tap anywhere on the gate */
       if (gate.classList.contains("open")) return;
       gate.classList.add("open");
       burst(innerWidth / 2, innerHeight / 2, phone ? 80 : 150);
@@ -354,7 +354,6 @@ document.querySelectorAll(".page").forEach(page => pageObserver.observe(page));
       setTimeout(() => { gate.classList.add("done"); ambient = true; }, 1700);
     });
   } else {
-    if (gate) gate.remove();
     root.classList.remove("intro-lock");
   }
 

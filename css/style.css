@@ -2902,17 +2902,6 @@ html.intro-lock .page-names * { animation-play-state: paused !important; }
 .gate.open { pointer-events: none; }
 .gate-center { position: relative; z-index: 2; padding: 24px; text-align: center; color: #f3e8da; transition: opacity .7s ease, transform 1s var(--ease-out); }
 .gate.open .gate-center { opacity: 0; transform: scale(1.5); }
-.seal {
-  position: relative; display: flex; align-items: center; justify-content: center; gap: 4px;
-  width: 132px; height: 132px; margin: 0 auto 26px; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f8e3a2, #b77b22 62%, #7a4f14);
-  box-shadow: 0 0 0 6px rgba(211,183,120,.18), 0 0 70px rgba(246,220,148,.45);
-  color: #2a1a05; font: 400 2.5rem/1 var(--display);
-  animation: seal-in 1.4s var(--ease-out) both, breathe 3.2s 1.4s ease-in-out infinite;
-}
-.seal i { font: italic 1.4rem var(--serif); }
-.seal::before, .seal::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--glow); border-radius: 50%; animation: ripple 3.2s ease-out infinite; }
-.seal::after { animation-delay: 1.6s; }
 .gate-names { margin: 0; font: 400 clamp(2rem, 8vw, 3.2rem)/1.1 var(--display); animation: rise-in 1s .5s var(--ease-out) both; }
 .gate-sub { margin: 10px 0 28px; font: 600 13px/1.6 var(--body); letter-spacing: .12em; color: var(--gold-200); animation: rise-in 1s .7s var(--ease-out) both; }
 .gate-btn {
@@ -3015,7 +3004,7 @@ html.intro-lock .page-names * { animation-play-state: paused !important; }
 @keyframes fade { from { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .gate, #petals, .scroll-progress, .spark { display: none !important; }
+  #petals, .scroll-progress, .spark { display: none !important; }
   .js .rv, .js .rv-wipe, .js .rv-iris, .js .rv-unfold, .js .rv-photo .couple-art-image { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
   .js .rv-photo .couple-gold-frame :is(rect, path, use) { stroke-dasharray: none; stroke-dashoffset: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
@@ -3027,7 +3016,6 @@ html.intro-lock .page-names * { animation-play-state: paused !important; }
 .gate-btn { max-width: 88vw; }
 .countdown-value, .rv, .rv-wipe, .rv-iris, .rv-unfold { will-change: transform, opacity; }
 @media (max-width: 600px) {
-  .seal { width: 108px; height: 108px; font-size: 2.1rem; margin-bottom: 20px; }
   .js .rv { filter: blur(4px); transform: translateY(24px); }
   .js .page-names .couple-names span[data-i18n] { animation-name: name-in-m, shimmer; }
   .spark { font-size: 12px; }
@@ -3053,3 +3041,8 @@ html.intro-lock .page-names * { animation-play-state: paused !important; }
 }
 .gate-center { text-shadow: 0 2px 14px rgba(10,13,30,.7); }
 .gate.open { opacity: 0; transform: scale(1.06); visibility: hidden; }
+
+/* ---------- Gate polish ---------- */
+html { background-color: #151a30; }          /* no white flash on overscroll / browser bars */
+.gate { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.gate-names { font-size: clamp(2.2rem, 9vw, 3.4rem); }
